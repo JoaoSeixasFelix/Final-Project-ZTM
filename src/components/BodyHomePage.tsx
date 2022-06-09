@@ -12,11 +12,11 @@ export const BodyHomePage = () => {
         <RankDescription name={"Gugu Gaitero"} rank={1} />
       </div>
       <div className="flex flex-col w-full justify-center h-1/2 items-center">
-        <p className="text-center sm:text-xl">
+        <p className="text-center mb-4 sm:text-xl">
           This Magic brain will detect faces in your pictures. Fit it a try.
         </p>
-        <div className="flex items-center justify-center bg-slate-500 h-2/4 w-3/4">
-          <div className=" grid w-4/5 sm:grid-cols-2 text-center mt-6">
+        <div className="sm:max-w-2xl flex items-center justify-center bg-slate-500 px-8 h-2/4 w-4/5">
+          <div className="grid sm:grid-cols-2">
             <div>
               <Input
                 onValueChange={(e) => setLink(e)}
@@ -37,7 +37,7 @@ export const BodyHomePage = () => {
                 width="sm:w-36 w-56"
                 backGroundColor="bg-slate-900"
                 textColor="text-white"
-                padding="py-3"
+                padding="py-2"
               >
                 Entrar
               </Button>
