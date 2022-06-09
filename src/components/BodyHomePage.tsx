@@ -16,7 +16,7 @@ export const BodyHomePage = () => {
           This Magic brain will detect faces in your pictures. Fit it a try.
         </p>
         <div className="sm:max-w-2xl flex items-center justify-center bg-slate-500 px-8 h-2/4 w-4/5">
-          <div className="grid sm:grid-cols-2">
+          <div className="sm:max-w-xl grid sm:grid-cols-2">
             <div>
               <Input
                 onValueChange={(e) => setLink(e)}
