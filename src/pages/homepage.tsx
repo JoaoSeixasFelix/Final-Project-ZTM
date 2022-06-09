@@ -8,7 +8,7 @@ const HomePage = () => {
       <div className="w-full h-1/5 items-center">
         <NavBar />
       </div>
-      <div className=" flex h-4/5 justify-items-center">
+      <div className="flex h-4/5 w-full justify-items-center">
         <BodyHomePage />
       </div>
     </div>
