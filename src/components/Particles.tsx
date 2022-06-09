@@ -16,7 +16,7 @@ export const ParticlesHomePage = () => {
     <Particles
       id="tsparticles"
       init={particlesInit}
-      //   loaded={particlesLoaded}
+      // loaded={particlesLoaded}
       options={{
         background: {},
         fpsLimit: 120,
@@ -63,15 +63,15 @@ export const ParticlesHomePage = () => {
               default: "bounce",
             },
             random: false,
-            speed: 6,
+            speed: 3,
             straight: false,
           },
           number: {
             density: {
               enable: true,
-              area: 800,
+              area: 1000,
             },
-            value: 80,
+            value: 100,
           },
           opacity: {
             value: 0.5,

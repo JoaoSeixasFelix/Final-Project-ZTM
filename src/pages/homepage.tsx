@@ -6,13 +6,14 @@ import { RankDescription } from "../components/RankDescription";
 const HomePage = () => {
   return (
     <div className="h-full w-full flex flex-col text-center justify-items-center ">
-      <div className="z-auto">
-        <ParticlesHomePage />
-      </div>
-      <div className="w-full h-1/5 items-center">
+      
+      <div className="w-full bg-white h-1/5 items-center">
         <NavBar />
       </div>
       <div className="flex flex-col h-4/5 w-full justify-center items-center">
+      <div className="-z-10">
+        <ParticlesHomePage />
+      </div>
         <RankDescription name={"Amada Rita"} rank={1} />
         <div className="flex w-full justify-center items-center">
           <BodyHomePage />

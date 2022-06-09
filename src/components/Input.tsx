@@ -20,6 +20,7 @@ type PropsInput = {
     email?: string;
     password?: string;
     required?: boolean;
+    padding?: string;
   };
 
 export const Input = ({
@@ -37,7 +38,8 @@ export const Input = ({
   marginRight,
   marginBottom,
   marginLeft,
-  required
+  padding,
+  required,
 }: PropsInput) => {
   return (
     <div>
@@ -58,7 +60,7 @@ export const Input = ({
            ${marginRight}
            ${marginBottom}
            ${marginLeft}
-           w-96
+           ${padding}
            font-bold rounded text-xs
            shadow appearance-none border-2 
           leading-tight focus:outline-nonefirst-letter:focus:shadow-outline`
