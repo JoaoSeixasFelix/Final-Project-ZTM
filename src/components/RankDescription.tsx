@@ -5,11 +5,11 @@ type TypeProps = {
 
 export const RankDescription = (props: TypeProps) => {
   return (
-    <div className="flex flex-col justify-start items-center">
-      <p className="text-center text-xl">
+    <div className="flex flex-col text-white justify-start items-center">
+      <p className="text-center text-2xl">
         Hello {props.name}, your current rank is...
       </p>
-      <h1 className="text-4xl">#{props.rank}</h1>
+      <h1 className="text-6xl">#{props.rank}</h1>
     </div>
   );
 };

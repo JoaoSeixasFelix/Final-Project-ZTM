@@ -6,7 +6,7 @@ export const BodyHomePage = () => {
   const [link, setLink] = useState();
   console.log(link);
   return (
-    <div className="flex flex-col xl:flex-row lg:flex-row bg-slate-400 xl:w-2/5 lg:h-1/4 lg:w-3/5 h-1/4 w-5/6 !justify-center items-center">
+    <div className="flex flex-col xl:flex-row lg:flex-row bg-opacity-60 bg-clip-padding backdrop-blur-sm bg-blue-500 xl:w-2/5 lg:h-1/4 lg:w-3/5 h-1/4 w-5/6 !justify-center items-center">
       <Input
         onValueChange={(e) => setLink(e)}
         name="InputLink"
@@ -23,7 +23,7 @@ export const BodyHomePage = () => {
       <Button
         type={"submit"}
         width="xl:w-44 lg:w-44 w-60"
-        backGroundColor="bg-purple-600"
+        backGroundColor="bg-purple-500"
         textColor="text-white"
         padding="py-2"
       >
