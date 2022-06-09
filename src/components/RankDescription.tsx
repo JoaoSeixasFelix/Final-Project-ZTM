@@ -10,6 +10,7 @@ export const RankDescription = (props: TypeProps) => {
         Hello {props.name}, your current rank is...
       </p>
       <h1 className="text-4xl">#{props.rank}</h1>
+      <p>This Magic brain will detect faces in your pictures. Fit it a try.</p>
     </div>
   );
 };
