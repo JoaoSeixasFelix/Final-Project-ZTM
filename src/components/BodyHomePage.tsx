@@ -6,7 +6,8 @@ export const BodyHomePage = () => {
   const [link, setLink] = useState();
   console.log(link);
   return (
-    <div className="inline-block lg:w-1/3 w-9/12 justify-center items-center">
+    <div className="inline-block xl:w-1/3 lg:w-4/6 w-9/12 justify-center items-center">
+      <p>This Magic brain will detect faces in your pictures. Fit it a try.</p>
       <div className="grid lg:grid-cols-2">
         <Input
           onValueChange={(e) => setLink(e)}
@@ -15,7 +16,7 @@ export const BodyHomePage = () => {
           type={"text"}
           value={link}
           borderColor="border-slate-500"
-          width="w-44"
+          width="xl:w-full lg:w-96 w-60"
           padding="py-3"
           bgColor="white"
           textColor="white"
@@ -23,7 +24,7 @@ export const BodyHomePage = () => {
         />
         <Button
           type={"submit"}
-          width="w-44"
+          width="xl:w-44 w-60"
           backGroundColor="bg-slate-900"
           textColor="text-white"
           padding="py-2"
