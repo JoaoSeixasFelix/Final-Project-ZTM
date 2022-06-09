@@ -5,7 +5,7 @@ import { RankDescription } from "../components/RankDescription";
 
 const HomePage = () => {
   return (
-    <div className="h-full w-full bg-gradient-to-bl from-purple-800 to-blue-500  flex flex-col text-center justify-items-center">
+    <div className="h-full w-full bg-gradient-to-bl from-fuchsia-900 to-blue-400  flex flex-col text-center justify-items-center">
       <ParticlesHomePage />
       <div className="z-50 h-1/5">
         <NavBar />

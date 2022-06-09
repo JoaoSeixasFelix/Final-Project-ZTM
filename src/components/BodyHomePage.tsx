@@ -21,11 +21,13 @@ export const BodyHomePage = () => {
         required
       />
       <Button
+        onClick={() => console.log("Cliquei!!")}
         type={"submit"}
         width="xl:w-44 lg:w-44 w-60"
         backGroundColor="bg-purple-500"
         textColor="text-white"
         padding="py-2"
+        marginLeft="lg:ml-4"
       >
         Entrar
       </Button>

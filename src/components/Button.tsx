@@ -53,7 +53,7 @@ export const Button = ({
   return (
     <div>
       <button
-        onClick={onClick}
+        onClick={() => {}}
         type={type}
         className={classNames(
           `${backGroundColor}
@@ -75,7 +75,7 @@ export const Button = ({
            ${paddingLeft}
            ${rounded}
            font-bold
-           rounded-lg font-Poppins`
+           rounded-full font-Poppins`
         )}
       >
         {children}
