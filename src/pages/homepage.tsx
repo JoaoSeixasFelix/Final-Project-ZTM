@@ -6,7 +6,7 @@ import { RankDescription } from "../components/RankDescription";
 const HomePage = () => {
   return (
     <div className="h-full w-full flex flex-col text-center justify-items-center ">
-      <div className="z-0">
+      <div className="z-auto">
         <ParticlesHomePage />
       </div>
       <div className="w-full h-1/5 items-center">

@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { Button } from "./Button";
 import { Input } from "./Input";
-import { RankDescription } from "./RankDescription";
 
 export const BodyHomePage = () => {
   const [link, setLink] = useState();
   console.log(link);
   return (
-    <div className="block w-full justify-center">
-      <div className="grid sm:grid-cols-2">
+    <div className="inline-block lg:w-1/4 w-10/12 justify-center items-center">
+      <div className="grid lg:grid-cols-2">
         <Input
           onValueChange={(e) => setLink(e)}
           name="InputLink"
@@ -16,14 +15,14 @@ export const BodyHomePage = () => {
           type={"text"}
           value={link}
           borderColor="border-slate-500"
-          width="py-3"
+          width="lg:96 w-56 py-3"
           bgColor="white"
           textColor="white"
           required
         />
         <Button
           type={"submit"}
-          width="w-52"
+          width="lg:96 w-56"
           backGroundColor="bg-slate-900"
           textColor="text-white"
           padding="py-2"
@@ -31,7 +30,6 @@ export const BodyHomePage = () => {
           Entrar
         </Button>
       </div>
-      <div className="flex justify-center sm:w-96 w-52"></div>
     </div>
   );
 };
