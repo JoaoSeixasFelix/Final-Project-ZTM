@@ -9,10 +9,10 @@ const HomePage = () => {
       <div className="-z-10">
         <ParticlesHomePage />
       </div>
-      <div className="h-1/5">
+      <div className="z-40 h-1/5">
         <NavBar />
       </div>
-      <div className="flex justify-center items-center h-1/5">
+      <div className="flex justify-center items-end h-2/5">
         <RankDescription name="Fernando" rank={15} />
       </div>
       <div className="flex justify-center items-center h-3/5">
