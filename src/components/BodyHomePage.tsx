@@ -28,6 +28,7 @@ export const BodyHomePage = () => {
         textColor="text-white"
         padding="py-2"
         marginLeft="lg:ml-4"
+        effects="hover:bg-purple-900"
       >
         Entrar
       </Button>

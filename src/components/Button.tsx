@@ -24,6 +24,7 @@ type PropsButton = {
   paddingRight?: string;
   paddingLeft?: string;
   rounded?: string;
+  effects?: string;
 };
 
 export const Button = ({
@@ -49,6 +50,7 @@ export const Button = ({
   paddingRight,
   paddingLeft,
   rounded,
+  effects,
 }: PropsButton) => {
   return (
     <div>
@@ -74,6 +76,7 @@ export const Button = ({
            ${paddingRight}
            ${paddingLeft}
            ${rounded}
+           ${effects}
            font-bold
            rounded-full font-Poppins`
         )}
