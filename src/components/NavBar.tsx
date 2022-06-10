@@ -8,7 +8,7 @@ export const NavBar = () => {
       <div className="flex w-1/2 mt-4 ml-6 justify-start mb-5 items-center">
         <Image src={Icon} height={90} width={90} />
       </div>
-      <div className="flex justify-end items-center mt-3 mr-16 w-1/2">
+      <div className="flex justify-end items-center mr-10 w-1/2">
         <Button
           width="w-24"
           height="h-12"
