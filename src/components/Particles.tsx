@@ -20,7 +20,7 @@ export const ParticlesHomePage = () => {
         // loaded={particlesLoaded}
         options={{
           background: {},
-          fpsLimit: 120,
+          fpsLimit: 144,
           interactivity: {
             events: {
               onClick: {
@@ -50,7 +50,7 @@ export const ParticlesHomePage = () => {
             links: {
               color: "#fff",
               distance: 150,
-              enable: true,
+              enable: false,
               opacity: 0.5,
               width: 1,
             },
@@ -58,7 +58,7 @@ export const ParticlesHomePage = () => {
               enable: false,
             },
             move: {
-              direction: "none",
+              direction: "bottom",
               enable: true,
               outModes: {
                 default: "bounce",
