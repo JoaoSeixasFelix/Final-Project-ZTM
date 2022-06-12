@@ -30,7 +30,7 @@ export const BodyHomePage = () => {
         marginLeft="lg:ml-4"
         effects="hover:bg-purple-900"
       >
-        Entrar
+        Detect!
       </Button>
     </div>
   );

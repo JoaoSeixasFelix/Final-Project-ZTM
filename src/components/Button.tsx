@@ -55,7 +55,7 @@ export const Button = ({
   return (
     <div>
       <button
-        onClick={() => {}}
+        onClick={onClick}
         type={type}
         className={classNames(
           `${backGroundColor}
