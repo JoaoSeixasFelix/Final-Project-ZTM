@@ -1,17 +1,19 @@
+import Image from "next/image";
 import { useState } from "react";
+import { res } from "../services/api";
 import { Button } from "./Button";
 import { Input } from "./Input";
 
 export const BodyHomePage = () => {
   const [link, setLink] = useState();
   console.log(link);
-
+  
   const USER_ID = "vp3fx9nhqq2j";
   const PAT = "4bf991280305438ba4a61e7963875886";
-  const APP_ID = "e8aae435af7d406696fec789ca6567fd";
-  const MODEL_ID = "face-detection";
-  const MODEL_VERSION = "6dc7e46bc9124c5c88824be4822abe105";
-  const IMAGE_URL = "https://samples.clarifai.com/metro-north.jpg";
+  const APP_ID = "d85b056a98b44bc99fe922613461ae77";
+  const MODEL_ID = "general-image-recognition";
+  const MODEL_VERSION = "aa7f35c01e0642fda5cf400f543e7c40";
+  const IMAGE_URL = link;
   const raw = JSON.stringify({
     user_app_id: {
       user_id: USER_ID,
@@ -42,7 +44,7 @@ export const BodyHomePage = () => {
       `https://api.clarifai.com/v2/models/${MODEL_ID}/versions/${MODEL_VERSION}/outputs`,
       requestOptions
     )
-      .then((response) => console.log(response))
+      .then((response) => response.text())
       .then((result) => console.log(result))
       .catch((error) => console.log("error", error));
   };
@@ -74,6 +76,7 @@ export const BodyHomePage = () => {
       >
         Detect!
       </Button>
+      <img src={link}/>
     </div>
   );
 };

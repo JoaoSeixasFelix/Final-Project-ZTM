@@ -4,12 +4,10 @@ import { loadFull } from "tsparticles";
 
 export const ParticlesHomePage = () => {
   const particlesInit = async (main: any) => {
-    console.log(main);
     await loadFull(main);
   };
 
   const particlesLoaded = (container: any) => {
-    console.log(container);
   };
 
   return (
