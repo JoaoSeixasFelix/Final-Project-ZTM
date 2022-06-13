@@ -11,11 +11,11 @@ const HomePage = () => {
         <NavBar />
       </div>
       <div className="flex z-50 justify-center items-end h-2/5">
-        <RankDescription name="Fernando" rank={15} />
+        <RankDescription name="Pedro" rank={1} />
       </div>
       <div className="flex flex-col z-50 justify-center items-center h-3/5">
         <p className="text-white mb-5 text-xl">
-          This Magic brain will detect faces in your pictures. Fit it a try.
+          This Magic app will detect in your pictures. Fit it a try.
         </p>
         <BodyHomePage />
       </div>

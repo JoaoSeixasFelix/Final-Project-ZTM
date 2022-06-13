@@ -26,7 +26,7 @@ export const ParticlesHomePage = () => {
                 mode: "push",
               },
               onHover: {
-                enable: true,
+                enable: false,
                 mode: "repulse",
               },
               resize: true,
@@ -56,7 +56,7 @@ export const ParticlesHomePage = () => {
               enable: false,
             },
             move: {
-              direction: "bottom",
+              direction: "none",
               enable: true,
               outModes: {
                 default: "bounce",
@@ -79,7 +79,7 @@ export const ParticlesHomePage = () => {
               type: "circle",
             },
             size: {
-              value: { min: 1, max: 5 },
+              value: { min: 3, max: 5 },
             },
           },
           detectRetina: true,
