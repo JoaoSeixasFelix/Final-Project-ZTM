@@ -1,13 +1,13 @@
 import Image from "next/image";
-import { useState } from "react";
-import { res } from "../services/api";
+import { useEffect, useState } from "react";
+import { api } from "../services/api";
 import { Button } from "./Button";
 import { Input } from "./Input";
 
 export const BodyHomePage = () => {
   const [link, setLink] = useState();
-  console.log(link);
-  
+  const [picture, setPicture] = useState();
+
   const USER_ID = "vp3fx9nhqq2j";
   const PAT = "4bf991280305438ba4a61e7963875886";
   const APP_ID = "d85b056a98b44bc99fe922613461ae77";
@@ -30,23 +30,18 @@ export const BodyHomePage = () => {
     ],
   });
 
-  const requestOptions = {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      Authorization: "Key " + PAT,
-    },
-    body: raw,
-  };
-
-  const callAPi = () => {
-    fetch(
-      `https://api.clarifai.com/v2/models/${MODEL_ID}/versions/${MODEL_VERSION}/outputs`,
-      requestOptions
-    )
-      .then((response) => response.text())
-      .then((result) => console.log(result))
+  const res = () => {
+    api
+      .post(`/v2/models/${MODEL_ID}/versions/${MODEL_VERSION}/outputs`, raw, {
+        headers: {
+          Accept: "application/json",
+          Authorization: "Key " + PAT,
+        },
+      })
+      .then((response) => response)
+      .then((result) => console.log(result.data.outputs[0].data.concepts))
       .catch((error) => console.log("error", error));
+    setPicture(link);
   };
 
   return (
@@ -65,7 +60,7 @@ export const BodyHomePage = () => {
         required
       />
       <Button
-        onClick={() => callAPi()}
+        onClick={() => res()}
         type={"submit"}
         width="xl:w-44 lg:w-44 w-60"
         backGroundColor="bg-purple-500"
@@ -76,7 +71,7 @@ export const BodyHomePage = () => {
       >
         Detect!
       </Button>
-      <img src={link}/>
+      <img src={picture} />
     </div>
   );
 };
