@@ -14,7 +14,7 @@ const HomePage = () => {
         <RankDescription name="Pedro" rank={1} />
       </div>
       <div className="flex flex-col z-50 justify-center items-center h-3/5">
-        <p className="text-white mb-5 text-xl">
+        <p className="text-white mb-5 lg:text-xl text-sm">
           This Magic app will detect in your pictures. Fit it a try.
         </p>
         <BodyHomePage />
