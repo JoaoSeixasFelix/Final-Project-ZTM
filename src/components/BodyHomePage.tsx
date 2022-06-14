@@ -8,6 +8,8 @@ import { Input } from "./Input";
 export const BodyHomePage = () => {
   const [link, setLink] = useState();
   const [picture, setPicture] = useState();
+  const [predictionList, setPredictionList] = useState();
+  console.log(predictionList)
 
   const USER_ID = "vp3fx9nhqq2j";
   const PAT = "4bf991280305438ba4a61e7963875886";
@@ -39,7 +41,7 @@ export const BodyHomePage = () => {
           Authorization: "Key " + PAT,
         },
       })
-      .then((result) => console.log(result.data.outputs[0].data.concepts))
+      .then((result) => setPredictionList(result.data.outputs[0].data.concepts))
       .catch((error) => console.log("error", error));
     setPicture(link);
   };
@@ -75,7 +77,7 @@ export const BodyHomePage = () => {
         </Button>
       </div>
       <div>
-        <ImageRecognition pictures={picture} />
+        <ImageRecognition pictures={picture}  everything={predictionList}/>
       </div>
     </div>
   );

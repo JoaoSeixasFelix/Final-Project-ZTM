@@ -61,7 +61,7 @@ export const Input = ({
            ${marginBottom}
            ${marginLeft}
            ${padding}
-           font-bold rounded-lg text-xs text-center
+           font-bold rounded-lg text-xs
            shadow appearance-none border-2 
           leading-tight focus:outline-nonefirst-letter:focus:shadow-outline`
         )}

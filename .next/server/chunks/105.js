@@ -1,9 +1,9 @@
 "use strict";
-exports.id = 870;
-exports.ids = [870];
+exports.id = 105;
+exports.ids = [105];
 exports.modules = {
 
-/***/ 870:
+/***/ 4105:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 // ESM COMPAT FLAG
@@ -17,9 +17,9 @@ __webpack_require__.d(__webpack_exports__, {
 // EXTERNAL MODULE: external "react/jsx-runtime"
 var jsx_runtime_ = __webpack_require__(997);
 // EXTERNAL MODULE: external "react"
-var external_react_ = __webpack_require__(689);
+var external_react_ = __webpack_require__(6689);
 // EXTERNAL MODULE: external "axios"
-var external_axios_ = __webpack_require__(167);
+var external_axios_ = __webpack_require__(2167);
 var external_axios_default = /*#__PURE__*/__webpack_require__.n(external_axios_);
 ;// CONCATENATED MODULE: ./src/services/api.ts
 
@@ -27,86 +27,26 @@ const api = external_axios_default().create({
     baseURL: "https://api.clarifai.com"
 });
 
-// EXTERNAL MODULE: external "classnames"
-var external_classnames_ = __webpack_require__(3);
-var external_classnames_default = /*#__PURE__*/__webpack_require__.n(external_classnames_);
-;// CONCATENATED MODULE: ./src/components/Button.tsx
-
-
-const Button = ({ children , onClick , type , disabled =false , width , height , backGroundColor , textColor , border , borderColor , borderRadius , margin , marginTop , marginRight , marginBottom , marginLeft , padding , paddingTop , paddingBottom , paddingRight , paddingLeft , rounded , effects  })=>{
-    return /*#__PURE__*/ jsx_runtime_.jsx("div", {
-        children: /*#__PURE__*/ jsx_runtime_.jsx("button", {
-            onClick: onClick,
-            type: type,
-            className: external_classnames_default()(`${backGroundColor}
-           ${textColor}
-           ${width}
-           ${height}
-           ${border}
-           ${borderColor}
-           ${borderRadius}
-           ${margin}
-           ${marginTop}
-           ${marginRight}
-           ${marginBottom}
-           ${marginLeft}
-           ${padding}
-           ${paddingTop}
-           ${paddingBottom}
-           ${paddingRight}
-           ${paddingLeft}
-           ${rounded}
-           ${effects}
-           font-bold
-           rounded-full font-Poppins`),
-            children: children
-        })
-    });
-};
-
+// EXTERNAL MODULE: ./src/components/Button.tsx
+var Button = __webpack_require__(7543);
 ;// CONCATENATED MODULE: ./src/components/ImageRecognition.tsx
 
 const ImageRecognition = (props)=>{
-    return /*#__PURE__*/ jsx_runtime_.jsx("div", {
+    return /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
         className: "flex justify-center items-center mt-5 mb-5 sm:w-auto w-64",
-        children: /*#__PURE__*/ jsx_runtime_.jsx("img", {
-            src: props.pictures,
-            width: "400px"
-        })
+        children: [
+            /*#__PURE__*/ jsx_runtime_.jsx("img", {
+                src: props.pictures,
+                width: "400px"
+            }),
+            props.everything
+        ]
     });
 };
 /* harmony default export */ const components_ImageRecognition = (ImageRecognition);
 
-;// CONCATENATED MODULE: ./src/components/Input.tsx
-
-
-const Input = ({ onValueChange , name , placeholder , value ="" , type , width , bgColor , textColor , borderColor , margin , marginTop , marginRight , marginBottom , marginLeft , padding , required  })=>{
-    return /*#__PURE__*/ jsx_runtime_.jsx("div", {
-        children: /*#__PURE__*/ jsx_runtime_.jsx("input", {
-            onChange: (e)=>onValueChange(e.target.value)
-            ,
-            name: name,
-            placeholder: placeholder,
-            value: value,
-            type: type,
-            required: true,
-            className: external_classnames_default()(`${borderColor}
-           ${bgColor}
-           ${textColor}
-           ${width}
-           ${margin}
-           ${marginTop}
-           ${marginRight}
-           ${marginBottom}
-           ${marginLeft}
-           ${padding}
-           font-bold rounded-lg text-xs text-center
-           shadow appearance-none border-2 
-          leading-tight focus:outline-nonefirst-letter:focus:shadow-outline`)
-        })
-    });
-};
-
+// EXTERNAL MODULE: ./src/components/Input.tsx
+var Input = __webpack_require__(5740);
 ;// CONCATENATED MODULE: ./src/components/BodyHomePage.tsx
 
 
@@ -117,6 +57,8 @@ const Input = ({ onValueChange , name , placeholder , value ="" , type , width ,
 const BodyHomePage = ()=>{
     const { 0: link , 1: setLink  } = (0,external_react_.useState)();
     const { 0: picture , 1: setPicture  } = (0,external_react_.useState)();
+    const { 0: predictionList , 1: setPredictionList  } = (0,external_react_.useState)();
+    console.log(predictionList);
     const USER_ID = "vp3fx9nhqq2j";
     const PAT = "4bf991280305438ba4a61e7963875886";
     const APP_ID = "d85b056a98b44bc99fe922613461ae77";
@@ -144,7 +86,7 @@ const BodyHomePage = ()=>{
                 Accept: "application/json",
                 Authorization: "Key " + PAT
             }
-        }).then((result)=>console.log(result.data.outputs[0].data.concepts)
+        }).then((result)=>setPredictionList(result.data.outputs[0].data.concepts)
         ).catch((error)=>console.log("error", error)
         );
         setPicture(link);
@@ -155,7 +97,7 @@ const BodyHomePage = ()=>{
             /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
                 className: "flex flex-col xl:flex-row lg:flex-row bg-blue-700 bg-opacity-20 bg-clip-padding backdrop-blur-3xl bg-transparent xl:w-2/5 lg:h-1/4 lg:w-3/5 h-2/4 w-5/6 justify-center items-center",
                 children: [
-                    /*#__PURE__*/ jsx_runtime_.jsx(Input, {
+                    /*#__PURE__*/ jsx_runtime_.jsx(Input/* Input */.I, {
                         onValueChange: (e)=>setLink(e)
                         ,
                         name: "InputLink",
@@ -169,7 +111,7 @@ const BodyHomePage = ()=>{
                         textColor: "white",
                         required: true
                     }),
-                    /*#__PURE__*/ jsx_runtime_.jsx(Button, {
+                    /*#__PURE__*/ jsx_runtime_.jsx(Button/* Button */.z, {
                         onClick: ()=>res()
                         ,
                         type: "submit",
@@ -186,7 +128,8 @@ const BodyHomePage = ()=>{
             }),
             /*#__PURE__*/ jsx_runtime_.jsx("div", {
                 children: /*#__PURE__*/ jsx_runtime_.jsx(components_ImageRecognition, {
-                    pictures: picture
+                    pictures: picture,
+                    everything: predictionList
                 })
             })
         ]
@@ -194,10 +137,10 @@ const BodyHomePage = ()=>{
 };
 
 // EXTERNAL MODULE: ./node_modules/next/image.js
-var next_image = __webpack_require__(675);
+var next_image = __webpack_require__(5675);
 var image_default = /*#__PURE__*/__webpack_require__.n(next_image);
-;// CONCATENATED MODULE: ./public/NavBarIcons/strategy-svgrepo-com.svg
-/* harmony default export */ const strategy_svgrepo_com = ({"src":"/_next/static/media/strategy-svgrepo-com.f9a4f7ef.svg","height":512,"width":512});
+// EXTERNAL MODULE: ./public/NavBarIcons/strategy-svgrepo-com.svg
+var strategy_svgrepo_com = __webpack_require__(5255);
 ;// CONCATENATED MODULE: ./src/components/NavBar.tsx
 
 
@@ -210,14 +153,14 @@ const NavBar = ()=>{
             /*#__PURE__*/ jsx_runtime_.jsx("div", {
                 className: "flex w-1/2 mt-4 ml-6 justify-start mb-5 items-center",
                 children: /*#__PURE__*/ jsx_runtime_.jsx((image_default()), {
-                    src: strategy_svgrepo_com,
+                    src: strategy_svgrepo_com/* default */.Z,
                     height: 90,
                     width: 90
                 })
             }),
             /*#__PURE__*/ jsx_runtime_.jsx("div", {
                 className: "flex justify-end items-center mr-10 w-1/2",
-                children: /*#__PURE__*/ jsx_runtime_.jsx(Button, {
+                children: /*#__PURE__*/ jsx_runtime_.jsx(Button/* Button */.z, {
                     width: "w-24",
                     height: "h-12",
                     backGroundColor: "bg-slate-900",
@@ -235,10 +178,10 @@ const NavBar = ()=>{
 };
 
 // EXTERNAL MODULE: external "react-tsparticles"
-var external_react_tsparticles_ = __webpack_require__(753);
+var external_react_tsparticles_ = __webpack_require__(4753);
 var external_react_tsparticles_default = /*#__PURE__*/__webpack_require__.n(external_react_tsparticles_);
 // EXTERNAL MODULE: external "tsparticles"
-var external_tsparticles_ = __webpack_require__(47);
+var external_tsparticles_ = __webpack_require__(3047);
 ;// CONCATENATED MODULE: ./src/components/Particles.tsx
 
 
