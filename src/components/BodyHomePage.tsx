@@ -77,7 +77,7 @@ export const BodyHomePage = () => {
         </Button>
       </div>
       <div>
-        <ImageRecognition pictures={picture}  everything={predictionList}/>
+        <ImageRecognition pictures={picture}/>
       </div>
     </div>
   );

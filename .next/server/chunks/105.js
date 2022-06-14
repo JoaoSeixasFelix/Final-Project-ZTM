@@ -32,15 +32,12 @@ var Button = __webpack_require__(7543);
 ;// CONCATENATED MODULE: ./src/components/ImageRecognition.tsx
 
 const ImageRecognition = (props)=>{
-    return /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+    return /*#__PURE__*/ jsx_runtime_.jsx("div", {
         className: "flex justify-center items-center mt-5 mb-5 sm:w-auto w-64",
-        children: [
-            /*#__PURE__*/ jsx_runtime_.jsx("img", {
-                src: props.pictures,
-                width: "400px"
-            }),
-            props.everything
-        ]
+        children: /*#__PURE__*/ jsx_runtime_.jsx("img", {
+            src: props.pictures,
+            width: "400px"
+        })
     });
 };
 /* harmony default export */ const components_ImageRecognition = (ImageRecognition);
@@ -128,8 +125,7 @@ const BodyHomePage = ()=>{
             }),
             /*#__PURE__*/ jsx_runtime_.jsx("div", {
                 children: /*#__PURE__*/ jsx_runtime_.jsx(components_ImageRecognition, {
-                    pictures: picture,
-                    everything: predictionList
+                    pictures: picture
                 })
             })
         ]

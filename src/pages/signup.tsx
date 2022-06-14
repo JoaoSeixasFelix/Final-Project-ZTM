@@ -17,8 +17,12 @@ const SignUp = () => {
         <Image src={Icon} width={100} height={100} />
       </div>
 
+      <div className="flex items-end h-1/6 text-white text-3xl">
+          <p>Sign Up</p>
+      </div>
+
       <div className=" flex justify-center w-full items-center h-4/5">
-        <form className=" bg-indigo-400 bg-opacity-40 text-white bg-clip-padding backdrop-blur-3xl bg-transparent shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <form className=" bg-indigo-400 bg-opacity-40 text-black bg-clip-padding backdrop-blur-3xl bg-transparent shadow-2xl rounded px-8 pt-6 pb-8 mb-4">
           <label>
             Login
             <Input
@@ -71,7 +75,6 @@ const SignUp = () => {
           </label>
           <div className="mt-5 flex flex-col items-center">
             <Button
-              onClick={() => {}}
               type={"submit"}
               width="xl:w-44 lg:w-44 w-60"
               backGroundColor="bg-purple-900"
