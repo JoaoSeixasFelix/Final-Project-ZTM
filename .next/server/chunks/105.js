@@ -44,7 +44,11 @@ const ImageRecognition = (props)=>{
 
 // EXTERNAL MODULE: ./src/components/Input.tsx
 var Input = __webpack_require__(5740);
+// EXTERNAL MODULE: external "classnames"
+var external_classnames_ = __webpack_require__(9003);
+var external_classnames_default = /*#__PURE__*/__webpack_require__.n(external_classnames_);
 ;// CONCATENATED MODULE: ./src/components/BodyHomePage.tsx
+
 
 
 
@@ -54,8 +58,7 @@ var Input = __webpack_require__(5740);
 const BodyHomePage = ()=>{
     const { 0: link , 1: setLink  } = (0,external_react_.useState)();
     const { 0: picture , 1: setPicture  } = (0,external_react_.useState)();
-    const { 0: predictionList , 1: setPredictionList  } = (0,external_react_.useState)();
-    console.log(predictionList);
+    const { 0: predictionList , 1: setPredictionList  } = (0,external_react_.useState)([]);
     const USER_ID = "vp3fx9nhqq2j";
     const PAT = "4bf991280305438ba4a61e7963875886";
     const APP_ID = "d85b056a98b44bc99fe922613461ae77";
@@ -77,16 +80,24 @@ const BodyHomePage = ()=>{
             }, 
         ]
     });
-    const res = ()=>{
-        api.post(`/v2/models/${MODEL_ID}/versions/${MODEL_VERSION}/outputs`, raw, {
-            headers: {
-                Accept: "application/json",
-                Authorization: "Key " + PAT
+    const onSubmitImage = async ()=>{
+        if (link) {
+            try {
+                const res = await api.post(`/v2/models/${MODEL_ID}/versions/${MODEL_VERSION}/outputs`, raw, {
+                    headers: {
+                        Accept: "application/json",
+                        Authorization: "Key " + PAT
+                    }
+                });
+                const { data  } = res.data.outputs[0];
+                console.log(res);
+                setPredictionList(data.concepts);
+            } catch (err) {
+                alert(err);
             }
-        }).then((result)=>setPredictionList(result.data.outputs[0].data.concepts)
-        ).catch((error)=>console.log("error", error)
-        );
-        setPicture(link);
+            console.log(predictionList);
+            setPicture(link);
+        }
     };
     return /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
         className: "flex flex-col w-full h-full !justify-center items-center",
@@ -109,7 +120,7 @@ const BodyHomePage = ()=>{
                         required: true
                     }),
                     /*#__PURE__*/ jsx_runtime_.jsx(Button/* Button */.z, {
-                        onClick: ()=>res()
+                        onClick: ()=>onSubmitImage()
                         ,
                         type: "submit",
                         width: "xl:w-44 lg:w-44 w-60",
@@ -123,10 +134,43 @@ const BodyHomePage = ()=>{
                     })
                 ]
             }),
-            /*#__PURE__*/ jsx_runtime_.jsx("div", {
-                children: /*#__PURE__*/ jsx_runtime_.jsx(components_ImageRecognition, {
-                    pictures: picture
-                })
+            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                className: external_classnames_default()(`flex lg:flex-row lg:justify-center  ${link ? "bg-blue-700 bg-opacity-20 bg-clip-padding backdrop-blur-3xl bg-transparent" : ""} flex-col lg:mt-10 lg:items-start items-center lg:w-2/5 h-full `),
+                children: [
+                    /*#__PURE__*/ jsx_runtime_.jsx("div", {
+                        className: "flex justify-center h-full",
+                        children: /*#__PURE__*/ jsx_runtime_.jsx(components_ImageRecognition, {
+                            pictures: picture
+                        })
+                    }),
+                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                        className: "flex flex-col lg:w-96 lg:h-full justify-between lg:ml-8 w-60 overflow-y-auto lg:text-3xl",
+                        children: [
+                            link ? /*#__PURE__*/ jsx_runtime_.jsx("p", {
+                                children: "General"
+                            }) : "",
+                            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                                className: "flex lg:w-4/5 lg:h-full justify-between lg:ml-8 w-60 overflow-y-auto lg:text-3xl",
+                                children: [
+                                    /*#__PURE__*/ jsx_runtime_.jsx("ul", {
+                                        className: "text-left",
+                                        children: predictionList.map((concept, indice)=>/*#__PURE__*/ jsx_runtime_.jsx("li", {
+                                                children: concept.name
+                                            }, indice)
+                                        )
+                                    }),
+                                    /*#__PURE__*/ jsx_runtime_.jsx("ul", {
+                                        className: "lg:ml-7",
+                                        children: predictionList.map((concept, indice)=>/*#__PURE__*/ jsx_runtime_.jsx("li", {
+                                                children: concept.value.toFixed(1) * 100 + "%"
+                                            }, indice)
+                                        )
+                                    })
+                                ]
+                            })
+                        ]
+                    })
+                ]
             })
         ]
     });
@@ -187,13 +231,11 @@ const ParticlesHomePage = ()=>{
     const particlesInit = async (main)=>{
         await (0,external_tsparticles_.loadFull)(main);
     };
-    const particlesLoaded = (container)=>{};
     return /*#__PURE__*/ jsx_runtime_.jsx("div", {
         className: "",
         children: /*#__PURE__*/ jsx_runtime_.jsx((external_react_tsparticles_default()), {
             id: "tsparticles",
             init: particlesInit,
-            // loaded={particlesLoaded}
             options: {
                 background: {},
                 fpsLimit: 144,
@@ -303,28 +345,33 @@ const RankDescription = (props)=>{
 
 const HomePage = ()=>{
     return /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-        className: "h-full w-full bg-gradient-to-bl from-fuchsia-900 to-blue-400 flex flex-col text-center justify-items-center",
+        className: " h-full w-full overflow-hidden bg-gradient-to-bl from-fuchsia-900 to-blue-400 flex flex-col text-center justify-items-center",
         children: [
             /*#__PURE__*/ jsx_runtime_.jsx(Particles, {}),
             /*#__PURE__*/ jsx_runtime_.jsx("div", {
                 className: "z-50 h-1/5",
                 children: /*#__PURE__*/ jsx_runtime_.jsx(NavBar, {})
             }),
-            /*#__PURE__*/ jsx_runtime_.jsx("div", {
-                className: "flex z-50 justify-center items-end h-2/5",
-                children: /*#__PURE__*/ jsx_runtime_.jsx(RankDescription, {
-                    name: "Pedro",
-                    rank: 1
-                })
-            }),
             /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                className: "flex flex-col z-50 justify-center items-center h-3/5",
+                className: "h-4/5 overflow-y-auto",
                 children: [
-                    /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                        className: "text-white mb-5 lg:text-xl text-sm",
-                        children: "This Magic app will detect in your pictures. Fit it a try."
+                    /*#__PURE__*/ jsx_runtime_.jsx("div", {
+                        className: "flex z-50 justify-center items-end h-2/5",
+                        children: /*#__PURE__*/ jsx_runtime_.jsx(RankDescription, {
+                            name: "Pedro",
+                            rank: 1
+                        })
                     }),
-                    /*#__PURE__*/ jsx_runtime_.jsx(BodyHomePage, {})
+                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                        className: "flex flex-col z-20 justify-center lg:mt-28 items-center h-4/5",
+                        children: [
+                            /*#__PURE__*/ jsx_runtime_.jsx("p", {
+                                className: "text-white mb-5 lg:text-xl text-sm",
+                                children: "This Magic app will detect in your pictures. Fit it a try."
+                            }),
+                            /*#__PURE__*/ jsx_runtime_.jsx(BodyHomePage, {})
+                        ]
+                    })
                 ]
             })
         ]

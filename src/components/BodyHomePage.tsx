@@ -1,15 +1,14 @@
-import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { api } from "../services/api";
 import { Button } from "./Button";
 import ImageRecognition from "./ImageRecognition";
 import { Input } from "./Input";
+import classNames from "classnames";
 
 export const BodyHomePage = () => {
   const [link, setLink] = useState();
   const [picture, setPicture] = useState();
-  const [predictionList, setPredictionList] = useState();
-  console.log(predictionList)
+  const [predictionList, setPredictionList] = useState<any[]>([]);
 
   const USER_ID = "vp3fx9nhqq2j";
   const PAT = "4bf991280305438ba4a61e7963875886";
@@ -33,22 +32,37 @@ export const BodyHomePage = () => {
     ],
   });
 
-  const res = () => {
-    api
-      .post(`/v2/models/${MODEL_ID}/versions/${MODEL_VERSION}/outputs`, raw, {
-        headers: {
-          Accept: "application/json",
-          Authorization: "Key " + PAT,
-        },
-      })
-      .then((result) => setPredictionList(result.data.outputs[0].data.concepts))
-      .catch((error) => console.log("error", error));
-    setPicture(link);
+  const onSubmitImage = async () => {
+    if (link) {
+      try {
+        const res = await api.post(
+          `/v2/models/${MODEL_ID}/versions/${MODEL_VERSION}/outputs`,
+          raw,
+          {
+            headers: {
+              Accept: "application/json",
+              Authorization: "Key " + PAT,
+            },
+          }
+        );
+        const { data } = res.data.outputs[0];
+        console.log(res);
+        setPredictionList(data.concepts);
+      } catch (err) {
+        alert(err);
+      }
+      console.log(predictionList);
+      setPicture(link);
+    }
   };
 
   return (
     <div className="flex flex-col w-full h-full !justify-center items-center">
-      <div className="flex flex-col xl:flex-row lg:flex-row bg-blue-700 bg-opacity-20 bg-clip-padding backdrop-blur-3xl bg-transparent xl:w-2/5 lg:h-1/4 lg:w-3/5 h-2/4 w-5/6 justify-center items-center">
+      <div
+        className={
+          "flex flex-col xl:flex-row lg:flex-row bg-blue-700 bg-opacity-20 bg-clip-padding backdrop-blur-3xl bg-transparent xl:w-2/5 lg:h-1/4 lg:w-3/5 h-2/4 w-5/6 justify-center items-center"
+        }
+      >
         <Input
           onValueChange={(e) => setLink(e)}
           name="InputLink"
@@ -63,7 +77,7 @@ export const BodyHomePage = () => {
           required
         />
         <Button
-          onClick={() => res()}
+          onClick={() => onSubmitImage()}
           type={"submit"}
           width="xl:w-44 lg:w-44 w-60"
           backGroundColor="bg-purple-500"
@@ -76,8 +90,33 @@ export const BodyHomePage = () => {
           Detect!
         </Button>
       </div>
-      <div>
-        <ImageRecognition pictures={picture}/>
+      <div
+        className={classNames(
+          `flex lg:flex-row lg:justify-center  ${
+            link
+              ? "bg-blue-700 bg-opacity-20 bg-clip-padding backdrop-blur-3xl bg-transparent"
+              : ""
+          } flex-col lg:mt-10 lg:items-start items-center lg:w-2/5 h-full `
+        )}
+      >
+        <div className="flex justify-center h-full">
+          <ImageRecognition pictures={picture} />
+        </div>
+        <div className="flex flex-col lg:w-96 lg:h-full justify-between lg:ml-8 w-60 overflow-y-auto lg:text-3xl">
+          {link ? <p>General</p> : ""}
+          <div className="flex lg:w-4/5 lg:h-full justify-between lg:ml-8 w-60 overflow-y-auto lg:text-3xl">
+            <ul className="text-left">
+              {predictionList.map((concept, indice) => (
+                <li key={indice}>{concept.name}</li>
+              ))}
+            </ul>
+            <ul className="lg:ml-7">
+              {predictionList.map((concept, indice) => (
+                <li key={indice}>{concept.value.toFixed(1) * 100 + "%"}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import React from "react";
+import { Container } from "react-dom";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 
@@ -7,15 +8,11 @@ export const ParticlesHomePage = () => {
     await loadFull(main);
   };
 
-  const particlesLoaded = (container: any) => {
-  };
-
   return (
     <div className="">
       <Particles
         id="tsparticles"
         init={particlesInit}
-        // loaded={particlesLoaded}
         options={{
           background: {},
           fpsLimit: 144,

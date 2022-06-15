@@ -3,7 +3,7 @@ import { Dispatch, SetStateAction } from "react";
 
 type PropsButton = {
   children: any;
-  onClick?: () => void | Dispatch<SetStateAction<any>>;
+  onClick?: () => Promise<void> | Dispatch<SetStateAction<any>>;
   type: "submit" | "button" | "reset" | undefined;
   disabled?: boolean;
   width?: string;
