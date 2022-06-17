@@ -102,9 +102,9 @@ export const BodyHomePage = () => {
         <div className="flex justify-center h-full">
           <ImageRecognition pictures={picture} />
         </div>
-        <div className="flex flex-col lg:w-96 lg:h-full justify-between lg:ml-8 w-60 overflow-y-auto lg:text-3xl">
+        <div className="flex flex-col lg:w-96 lg:h-full text-white justify-between lg:ml-8 w-60 lg:overflow-y-auto lg:text-3xl">
           {link ? <p>General</p> : ""}
-          <div className="flex lg:w-4/5 lg:h-full justify-between lg:ml-8 w-60 overflow-y-auto lg:text-3xl">
+          <div className="flex lg:w-4/5 lg:h-full justify-between lg:ml-8 w-60 lg:text-3xl">
             <ul className="text-left">
               {predictionList.map((concept, indice) => (
                 <li key={indice}>{concept.name}</li>
