@@ -15,8 +15,9 @@ const HomePage = () => {
           <RankDescription name="Pedro" rank={1} />
         </div>
         <div className="flex flex-col z-20 justify-center lg:mt-28 items-center h-4/5">
-          <p className="text-white mb-5 lg:text-xl text-sm">
-            This magical app will describe your photo. Fit it a try.
+          <p className="text-white mb-16 lg:text-xl text-sm">
+            This magic app will describe some aspects in your photo. Fit it a
+            try.
           </p>
           <BodyHomePage />
         </div>

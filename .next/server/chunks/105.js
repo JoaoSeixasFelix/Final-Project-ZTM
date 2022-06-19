@@ -129,22 +129,22 @@ const BodyHomePage = ()=>{
                         padding: "py-2",
                         marginTop: "lg:mt-0 mt-1",
                         marginLeft: "lg:ml-4",
-                        effects: "hover:bg-purple-900",
+                        effects: "hover:bg-purple-900 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300",
                         children: "Detect!"
                     })
                 ]
             }),
             /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                className: external_classnames_default()(`flex lg:flex-row lg:justify-center  ${link ? "bg-blue-700 bg-opacity-20 bg-clip-padding backdrop-blur-3xl bg-transparent" : ""} flex-col lg:mt-10 lg:items-start items-center lg:w-2/5 h-full `),
+                className: external_classnames_default()(`flex lg:flex-row lg:w-4/5 lg:justify-center  ${link ? "bg-blue-700 bg-opacity-20 bg-clip-padding backdrop-blur-3xl bg-transparent" : ""} flex-col lg:mt-10 lg:items-start items-center lg:w-2/5 h-full `),
                 children: [
                     /*#__PURE__*/ jsx_runtime_.jsx("div", {
-                        className: "flex justify-center h-full",
+                        className: "flex w-full justify-center h-full",
                         children: /*#__PURE__*/ jsx_runtime_.jsx(components_ImageRecognition, {
                             pictures: picture
                         })
                     }),
                     /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                        className: "flex flex-col lg:w-96 lg:h-full text-white justify-between lg:ml-8 w-60 lg:overflow-y-auto lg:text-3xl",
+                        className: "flex flex-col lg:w-full lg:h-full text-white justify-between lg:ml-8 w-60 lg:overflow-y-auto lg:text-3xl",
                         children: [
                             link ? /*#__PURE__*/ jsx_runtime_.jsx("p", {
                                 children: "General"
@@ -155,7 +155,7 @@ const BodyHomePage = ()=>{
                                     /*#__PURE__*/ jsx_runtime_.jsx("ul", {
                                         className: "text-left",
                                         children: predictionList.map((concept, indice)=>/*#__PURE__*/ jsx_runtime_.jsx("li", {
-                                                children: concept.name
+                                                children: concept.name.toUpperCase()
                                             }, indice)
                                         )
                                     }),
@@ -366,8 +366,8 @@ const HomePage = ()=>{
                         className: "flex flex-col z-20 justify-center lg:mt-28 items-center h-4/5",
                         children: [
                             /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                                className: "text-white mb-5 lg:text-xl text-sm",
-                                children: "This magical app will describe your photo. Fit it a try."
+                                className: "text-white mb-16 lg:text-xl text-sm",
+                                children: "This magic app will describe some aspects in your photo. Fit it a try."
                             }),
                             /*#__PURE__*/ jsx_runtime_.jsx(BodyHomePage, {})
                         ]
