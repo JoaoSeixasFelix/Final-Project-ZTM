@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { api } from "../services/api";
+import { clarifaiApi } from "../services/api";
 import { Button } from "./Button";
 import ImageRecognition from "./ImageRecognition";
 import { Input } from "./Input";
@@ -35,7 +35,7 @@ export const BodyHomePage = () => {
   const onSubmitImage = async () => {
     if (link) {
       try {
-        const res = await api.post(
+        const res = await clarifaiApi.post(
           `/v2/models/${MODEL_ID}/versions/${MODEL_VERSION}/outputs`,
           raw,
           {
@@ -46,12 +46,10 @@ export const BodyHomePage = () => {
           }
         );
         const { data } = res.data.outputs[0];
-        console.log(res);
         setPredictionList(data.concepts);
       } catch (err) {
         alert(err);
       }
-      console.log(predictionList);
       setPicture(link);
     }
   };

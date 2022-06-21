@@ -1,9 +1,24 @@
+import { FormEvent, useCallback, useEffect, useState } from "react";
 import { BodyHomePage } from "../components/BodyHomePage";
 import { NavBar } from "../components/NavBar";
 import ParticlesHomePage from "../components/Particles";
 import { RankDescription } from "../components/RankDescription";
+import { api } from "../services/api";
 
 const HomePage = () => {
+  const [user, setUser] = useState([]);
+
+  api
+    .get("/")
+    .then((resp) => {
+      if (resp) {
+        console.log(resp.data)
+      } else {
+        console.log("not found");
+      }
+    })
+    .catch((err) => console.log(err));
+
   return (
     <div className=" h-full w-full overflow-hidden bg-gradient-to-bl from-fuchsia-900 to-blue-400  flex flex-col text-center justify-items-center">
       <ParticlesHomePage />
