@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import Icon from "../../public/NavBarIcons/strategy-svgrepo-com.svg";
-import { FormEvent, FormHTMLAttributes, useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import { Button } from "../components/Button";
 import { Input } from "../components/Input";
-import { api } from "../services/api";
+// import { api } from "../services/api";
 import Router from "next/router";
 
 const SignUp = () => {
@@ -12,34 +12,34 @@ const SignUp = () => {
   const [password, setPassWord] = useState();
   const [email, setEmail] = useState();
 
-  if (name !== undefined && email !== undefined && password !== undefined) {
-  }
-  const handleSubmit = useCallback(
-    async (e: any) => {
-      e.preventDefault();
-      if (name !== undefined && email !== undefined && password !== undefined) {
-        try {
-          await api
-            .post("/signup", {
-              id: "",
-              name: name,
-              email: email,
-              password: password,
-              entries: " ",
-              joined: new Date(),
-            })
-            .then((resp) => {
-              if (resp.status === 200) {
-                Router.push("/homepage");
-              }
-            });
-        } catch (err) {
-          console.error(err);
-        }
-      }
-    },
-    [name, email, password]
-  );
+  // if (name !== undefined && email !== undefined && password !== undefined) {
+  // }
+  // const handleSubmit = useCallback(
+  //   async (e: any) => {
+  //     e.preventDefault();
+  //     if (name !== undefined && email !== undefined && password !== undefined) {
+  //       try {
+  //         await api
+  //           .post("/signup", {
+  //             id: "",
+  //             name: name,
+  //             email: email,
+  //             password: password,
+  //             entries: " ",
+  //             joined: new Date(),
+  //           })
+  //           .then((resp) => {
+  //             if (resp.status === 200) {
+  //               Router.push("/homepage");
+  //             }
+  //           });
+  //       } catch (err) {
+  //         console.error(err);
+  //       }
+  //     }
+  //   },
+  //   [name, email, password]
+  // );
 
   return (
     <div className="flex flex-col h-full w-full bg-gradient-to-bl from-fuchsia-900 to-blue-400 items-center justify-center">
@@ -53,7 +53,7 @@ const SignUp = () => {
 
       <div className=" flex justify-center w-full items-center h-4/5">
         <form
-          onSubmit={handleSubmit}
+          // onSubmit={handleSubmit}
           className=" bg-indigo-400 bg-opacity-40 text-black bg-clip-padding backdrop-blur-3xl bg-transparent shadow-2xl rounded px-8 pt-6 pb-8 mb-4"
         >
           <label>

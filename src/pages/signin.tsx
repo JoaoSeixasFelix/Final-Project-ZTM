@@ -4,37 +4,37 @@ import Icon from "../../public/NavBarIcons/strategy-svgrepo-com.svg";
 import { useCallback, useState } from "react";
 import { Button } from "../components/Button";
 import { Input } from "../components/Input";
-import { api } from "../services/api";
+// import { api } from "../services/api";
 import Router from "next/router";
 
 const SignIn = () => {
   const [email, setEmail] = useState();
   const [password, setPassWord] = useState();
 
-  if (email !== undefined && password !== undefined) {
-  }
-  const handleSubmit = useCallback(
-    async (e: any) => {
-      e.preventDefault();
-      if (email !== undefined && password !== undefined) {
-        try {
-          await api
-            .post("/signin", {
-              email,
-              password,
-            })
-            .then((resp) => {
-              if (resp.status === 200) {
-                Router.push("/homepage");
-              }
-            });
-        } catch (err) {
-          alert(err);
-        }
-      }
-    },
-    [email, password]
-  );
+  // if (email !== undefined && password !== undefined) {
+  // }
+  // const handleSubmit = useCallback(
+  //   async (e: any) => {
+  //     e.preventDefault();
+  //     if (email !== undefined && password !== undefined) {
+  //       try {
+  //         await api
+  //           .post("/signin", {
+  //             email,
+  //             password,
+  //           })
+  //           .then((resp) => {
+  //             if (resp.status === 200) {
+  //               Router.push("/homepage");
+  //             }
+  //           });
+  //       } catch (err) {
+  //         alert(err);
+  //       }
+  //     }
+  //   },
+  //   [email, password]
+  // );
 
   return (
     <div className="flex flex-col h-full w-full bg-gradient-to-bl from-fuchsia-900 to-blue-400 items-center justify-center">
@@ -48,7 +48,7 @@ const SignIn = () => {
 
       <div className=" flex items-center h-4/5">
         <form
-          onSubmit={handleSubmit}
+          // onSubmit={handleSubmit}
           className=" bg-indigo-400 bg-opacity-40 -mt-10 text-black bg-clip-padding backdrop-blur-3xl bg-transparent shadow-md rounded px-6 pt-6 pb-8 mb-4"
         >
           <label>

@@ -3,17 +3,17 @@ import { BodyHomePage } from "../components/BodyHomePage";
 import { NavBar } from "../components/NavBar";
 import ParticlesHomePage from "../components/Particles";
 import { RankDescription } from "../components/RankDescription";
-import { api } from "../services/api";
+// import { api } from "../services/api";
 
 const HomePage = () => {
-  try {
-    api.get("/")
-    .then((resp) => {
-      console.log(resp.data);
-    });
-  } catch (err) {
-    console.log(err);
-  }
+  // try {
+  //   api.get("/")
+  //   .then((resp) => {
+  //     console.log(resp.data);
+  //   });
+  // } catch (err) {
+  //   console.log(err);
+  // }
 
   return (
     <div className=" h-full w-full overflow-hidden bg-gradient-to-bl from-fuchsia-900 to-blue-400  flex flex-col text-center justify-items-center">
