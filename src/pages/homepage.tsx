@@ -1,4 +1,4 @@
-import { FormEvent, useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { BodyHomePage } from "../components/BodyHomePage";
 import { NavBar } from "../components/NavBar";
 import ParticlesHomePage from "../components/Particles";
@@ -6,18 +6,14 @@ import { RankDescription } from "../components/RankDescription";
 import { api } from "../services/api";
 
 const HomePage = () => {
-  const [user, setUser] = useState([]);
-
-  api
-    .get("/")
+  try {
+    api.get("/")
     .then((resp) => {
-      if (resp) {
-        console.log(resp.data)
-      } else {
-        console.log("not found");
-      }
-    })
-    .catch((err) => console.log(err));
+      console.log(resp.data);
+    });
+  } catch (err) {
+    console.log(err);
+  }
 
   return (
     <div className=" h-full w-full overflow-hidden bg-gradient-to-bl from-fuchsia-900 to-blue-400  flex flex-col text-center justify-items-center">
@@ -27,7 +23,7 @@ const HomePage = () => {
       </div>
       <div className="h-4/5 overflow-y-auto">
         <div className="flex z-50 justify-center items-end h-2/5">
-          <RankDescription name="Pedro" rank={1} />
+          <RankDescription name={"Pedro"} rank={1} />
         </div>
         <div className="flex flex-col z-20 justify-center lg:mt-28 items-center h-4/5">
           <p className="text-white mb-16 lg:text-xl text-sm">

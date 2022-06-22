@@ -1,25 +1,45 @@
 import Image from "next/image";
 import Link from "next/link";
 import Icon from "../../public/NavBarIcons/strategy-svgrepo-com.svg";
-import { FormEvent, useCallback, useEffect, useState } from "react";
+import { FormEvent, FormHTMLAttributes, useCallback, useState } from "react";
 import { Button } from "../components/Button";
 import { Input } from "../components/Input";
 import { api } from "../services/api";
+import Router from "next/router";
 
 const SignUp = () => {
-  const [login, setLogin] = useState();
+  const [name, setName] = useState();
   const [password, setPassWord] = useState();
   const [email, setEmail] = useState();
-  const [data, setData] = useState([]);
 
-  const handleSubmit = useCallback(async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    try {
-      await api.post("/signup", {});
-    } catch (error) {
-      console.error(error);
-    }
-  }, []);
+  if (name !== undefined && email !== undefined && password !== undefined) {
+  }
+  const handleSubmit = useCallback(
+    async (e: any) => {
+      e.preventDefault();
+      if (name !== undefined && email !== undefined && password !== undefined) {
+        try {
+          await api
+            .post("/signup", {
+              id: "",
+              name: name,
+              email: email,
+              password: password,
+              entries: " ",
+              joined: new Date(),
+            })
+            .then((resp) => {
+              if (resp.status === 200) {
+                Router.push("/homepage");
+              }
+            });
+        } catch (err) {
+          console.error(err);
+        }
+      }
+    },
+    [name, email, password]
+  );
 
   return (
     <div className="flex flex-col h-full w-full bg-gradient-to-bl from-fuchsia-900 to-blue-400 items-center justify-center">
@@ -32,15 +52,18 @@ const SignUp = () => {
       </div>
 
       <div className=" flex justify-center w-full items-center h-4/5">
-        <form onClick={handleSubmit} className=" bg-indigo-400 bg-opacity-40 text-black bg-clip-padding backdrop-blur-3xl bg-transparent shadow-2xl rounded px-8 pt-6 pb-8 mb-4">
+        <form
+          onSubmit={handleSubmit}
+          className=" bg-indigo-400 bg-opacity-40 text-black bg-clip-padding backdrop-blur-3xl bg-transparent shadow-2xl rounded px-8 pt-6 pb-8 mb-4"
+        >
           <label>
             Login
             <Input
-              onValueChange={(e) => setLogin(e)}
+              onValueChange={(e) => setName(e)}
               name="login"
               placeholder="  Username"
               type={"text"}
-              value={login}
+              value={name}
               borderColor="border-slate-500"
               width="xl:w-96 lg:w-96 w-60"
               padding="py-3"
@@ -85,7 +108,7 @@ const SignUp = () => {
           </label>
           <div className="mt-5 flex flex-col items-center">
             <Button
-              type={"button"}
+              type={"submit"}
               width="xl:w-44 lg:w-44 w-60"
               backGroundColor="bg-purple-900"
               textColor="text-white"

@@ -1,13 +1,40 @@
 import Image from "next/image";
 import Link from "next/link";
 import Icon from "../../public/NavBarIcons/strategy-svgrepo-com.svg";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Button } from "../components/Button";
 import { Input } from "../components/Input";
+import { api } from "../services/api";
+import Router from "next/router";
 
 const SignIn = () => {
-  const [login, setLogin] = useState();
+  const [email, setEmail] = useState();
   const [password, setPassWord] = useState();
+
+  if (email !== undefined && password !== undefined) {
+  }
+  const handleSubmit = useCallback(
+    async (e: any) => {
+      e.preventDefault();
+      if (email !== undefined && password !== undefined) {
+        try {
+          await api
+            .post("/signin", {
+              email,
+              password,
+            })
+            .then((resp) => {
+              if (resp.status === 200) {
+                Router.push("/homepage");
+              }
+            });
+        } catch (err) {
+          alert(err);
+        }
+      }
+    },
+    [email, password]
+  );
 
   return (
     <div className="flex flex-col h-full w-full bg-gradient-to-bl from-fuchsia-900 to-blue-400 items-center justify-center">
@@ -20,15 +47,18 @@ const SignIn = () => {
       </div>
 
       <div className=" flex items-center h-4/5">
-        <form className=" bg-indigo-400 bg-opacity-40 -mt-10 text-black bg-clip-padding backdrop-blur-3xl bg-transparent shadow-md rounded px-6 pt-6 pb-8 mb-4">
+        <form
+          onSubmit={handleSubmit}
+          className=" bg-indigo-400 bg-opacity-40 -mt-10 text-black bg-clip-padding backdrop-blur-3xl bg-transparent shadow-md rounded px-6 pt-6 pb-8 mb-4"
+        >
           <label>
             Login
             <Input
-              onValueChange={(e) => setLogin(e)}
+              onValueChange={(e) => setEmail(e)}
               name="login"
               placeholder="  Username"
               type={"text"}
-              value={login}
+              value={email}
               borderColor="border-slate-500"
               width="xl:w-96 lg:w-96 w-60"
               padding="py-3"
@@ -55,20 +85,18 @@ const SignIn = () => {
             />
           </label>
           <div className="mt-5 flex flex-col items-center">
-            <Link href={"/"}>
-              <Button
-                type={"submit"}
-                width="xl:w-44 lg:w-44 w-60"
-                backGroundColor="bg-purple-900"
-                textColor="text-white"
-                padding="py-2 px-4"
-                marginTop="lg:mt-0 mt-1"
-                marginLeft="lg:ml-4"
-                effects="hover:bg-purple-900"
-              >
-                Sign In
-              </Button>
-            </Link>
+            <Button
+              type={"submit"}
+              width="xl:w-44 lg:w-44 w-60"
+              backGroundColor="bg-purple-900"
+              textColor="text-white"
+              padding="py-2 px-4"
+              marginTop="lg:mt-0 mt-1"
+              marginLeft="lg:ml-4"
+              effects="hover:bg-purple-900"
+            >
+              Sign In
+            </Button>
             <div className="mt-3">
               <Link href={"/forgotpassword"}>Forgot Password?</Link>
             </div>

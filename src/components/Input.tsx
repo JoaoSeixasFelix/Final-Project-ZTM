@@ -2,7 +2,7 @@ import classNames from "classnames";
 import { Dispatch, SetStateAction } from "react";
 
 type PropsInput = {
-  onValueChange: (setLink?: any) => void;
+  onValueChange: (e:any) => void;
   placeholder: string;
   name: string;
   value?: string;
@@ -63,7 +63,7 @@ export const Input = ({
            ${padding}
            font-bold rounded-lg text-xs
            shadow appearance-none border-2 
-          leading-tight focus:outline-nonefirst-letter:focus:shadow-outline`
+          leading-tight focus:outline-nonefirst-letter:focus:shadow-outline required`
         )}
       ></input>
     </div>
