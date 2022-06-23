@@ -78,7 +78,7 @@ export const Button = ({
            ${rounded}
            ${effects}
            font-bold
-           rounded-full font-Poppins`
+           font-Poppins`
         )}
       >
         {children}

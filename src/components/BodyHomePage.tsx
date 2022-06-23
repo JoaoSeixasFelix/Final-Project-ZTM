@@ -85,7 +85,7 @@ export const BodyHomePage = () => {
           padding="py-2"
           marginTop="lg:mt-0 mt-1"
           marginLeft="lg:ml-4"
-          effects="lg:hover:bg-purple-900 transition lg:ease-in-out lg:delay-150 bg-purple-600 lg:hover:-translate-y-1 lg:hover:scale-110 lg:hover:bg-indigo-500 lg:duration-300"
+          effects="rounded-full lg:hover:bg-purple-900 transition lg:ease-in-out lg:delay-150 bg-purple-600 lg:hover:-translate-y-1 lg:hover:scale-110 lg:hover:bg-indigo-500 lg:duration-300"
         >
           Detect!
         </Button>

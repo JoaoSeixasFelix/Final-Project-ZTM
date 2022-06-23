@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import Icon from "../../public/NavBarIcons/strategy-svgrepo-com.svg";
 import { Button } from "./Button";
 
@@ -9,19 +10,21 @@ export const NavBar = () => {
         <Image src={Icon} height={90} width={90} />
       </div>
       <div className="flex justify-end items-center mr-10 w-1/2">
-        <Button
-          width="w-24"
-          height="h-12"
-          backGroundColor="bg-slate-900"
-          borderColor="border-black ho"
-          textColor="text-white"
-          rounded="rounded-full"
-          type="button"
-          border="border-2"
-          effects="hover:bg-purple-900"
-        >
-          SignOut
-        </Button>
+        <Link href={"/signin"}>
+          <Button
+            width="w-24"
+            height="h-12"
+            backGroundColor="bg-slate-900"
+            borderColor="border-black ho"
+            textColor="text-white"
+            rounded="rounded-full"
+            type="button"
+            border="border-2"
+            effects="rounded-full hover:bg-purple-900"
+          >
+            SignOut
+          </Button>
+        </Link>
       </div>
     </div>
   );

@@ -50,7 +50,7 @@ const Button = ({ children , onClick , type , disabled =false , width , height ,
            ${rounded}
            ${effects}
            font-bold
-           rounded-full font-Poppins`),
+           font-Poppins`),
             children: children
         })
     });

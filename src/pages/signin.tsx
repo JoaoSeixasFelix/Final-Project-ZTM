@@ -38,15 +38,14 @@ const SignIn = () => {
 
   return (
     <div className="flex flex-col h-full w-full bg-gradient-to-bl from-fuchsia-900 to-blue-400 items-center justify-center">
-      <div className="flex w-full justify-start h-1/6 mt-4 ml-6 mr-6">
+      <div className="flex w-full justify-start h-1/5 mt-4 ml-6 mr-6">
         <Image src={Icon} width={100} height={100} />
       </div>
 
-      <div className="flex items-end h-1/6 text-white text-3xl">
-        <p>Sign In</p>
-      </div>
-
-      <div className=" flex items-center h-4/5">
+      <div className="flex flex-col items-center mt-16 h-4/5">
+        <div className="flex items-end h-1/6 w-full mb-6 text-white text-3xl">
+          <p className="flex w-full h-full justify-center">Sign In</p>
+        </div>
         <form
           // onSubmit={handleSubmit}
           className=" bg-indigo-400 bg-opacity-40 -mt-10 text-black bg-clip-padding backdrop-blur-3xl bg-transparent shadow-md rounded px-6 pt-6 pb-8 mb-4"
@@ -85,6 +84,9 @@ const SignIn = () => {
             />
           </label>
           <div className="mt-5 flex flex-col items-center">
+            <div className="text-sm">
+              <Link href={"/forgotpassword"}>Forgot Password?</Link>
+            </div>
             <Button
               type={"submit"}
               width="xl:w-44 lg:w-44 w-60"
@@ -93,15 +95,22 @@ const SignIn = () => {
               padding="py-2 px-4"
               marginTop="lg:mt-0 mt-1"
               marginLeft="lg:ml-4"
-              effects="hover:bg-purple-900"
+              effects="rounded hover:bg-purple-900"
             >
               Sign In
             </Button>
-            <div className="mt-3">
-              <Link href={"/forgotpassword"}>Forgot Password?</Link>
-            </div>
           </div>
         </form>
+        <div className="flex bg-indigo-400 bg-opacity-50 justify-center xl:w-full lg:w-w-full w-72 rounded py-2 items-center">
+          <p className="text-lg">New?</p>
+          <Link href={"/signup"}>
+            <a
+              className="m-1 text-white no-underline hover:underline text-lg"
+            >
+              Create an account.
+            </a>
+          </Link>
+        </div>
       </div>
     </div>
   );

@@ -121,7 +121,7 @@ const SignUp = () => {
             </Button>
             <div className="mt-3">
               <Link href={"/signin"}>
-                <p className="text-xs">Already have an account? Sign In.</p>
+                <p className="text-xs cursor-pointer">Already have an account? Sign In.</p>
               </Link>
             </div>
           </div>

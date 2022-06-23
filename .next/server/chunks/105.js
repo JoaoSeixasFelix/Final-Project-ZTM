@@ -131,7 +131,7 @@ const BodyHomePage = ()=>{
                         padding: "py-2",
                         marginTop: "lg:mt-0 mt-1",
                         marginLeft: "lg:ml-4",
-                        effects: "lg:hover:bg-purple-900 transition lg:ease-in-out lg:delay-150 bg-purple-600 lg:hover:-translate-y-1 lg:hover:scale-110 lg:hover:bg-indigo-500 lg:duration-300",
+                        effects: "rounded-full lg:hover:bg-purple-900 transition lg:ease-in-out lg:delay-150 bg-purple-600 lg:hover:-translate-y-1 lg:hover:scale-110 lg:hover:bg-indigo-500 lg:duration-300",
                         children: "Detect!"
                     })
                 ]
@@ -182,9 +182,13 @@ const BodyHomePage = ()=>{
 // EXTERNAL MODULE: ./node_modules/next/image.js
 var next_image = __webpack_require__(5675);
 var image_default = /*#__PURE__*/__webpack_require__.n(next_image);
+// EXTERNAL MODULE: ./node_modules/next/link.js
+var next_link = __webpack_require__(1664);
+var link_default = /*#__PURE__*/__webpack_require__.n(next_link);
 // EXTERNAL MODULE: ./public/NavBarIcons/strategy-svgrepo-com.svg
 var strategy_svgrepo_com = __webpack_require__(5255);
 ;// CONCATENATED MODULE: ./src/components/NavBar.tsx
+
 
 
 
@@ -203,17 +207,20 @@ const NavBar = ()=>{
             }),
             /*#__PURE__*/ jsx_runtime_.jsx("div", {
                 className: "flex justify-end items-center mr-10 w-1/2",
-                children: /*#__PURE__*/ jsx_runtime_.jsx(Button/* Button */.z, {
-                    width: "w-24",
-                    height: "h-12",
-                    backGroundColor: "bg-slate-900",
-                    borderColor: "border-black ho",
-                    textColor: "text-white",
-                    rounded: "rounded-full",
-                    type: "button",
-                    border: "border-2",
-                    effects: "hover:bg-purple-900",
-                    children: "SignOut"
+                children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
+                    href: "/signin",
+                    children: /*#__PURE__*/ jsx_runtime_.jsx(Button/* Button */.z, {
+                        width: "w-24",
+                        height: "h-12",
+                        backGroundColor: "bg-slate-900",
+                        borderColor: "border-black ho",
+                        textColor: "text-white",
+                        rounded: "rounded-full",
+                        type: "button",
+                        border: "border-2",
+                        effects: "rounded-full hover:bg-purple-900",
+                        children: "SignOut"
+                    })
                 })
             })
         ]
