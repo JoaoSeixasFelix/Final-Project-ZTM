@@ -9,6 +9,7 @@ export const BodyHomePage = () => {
   const [link, setLink] = useState();
   const [picture, setPicture] = useState();
   const [predictionList, setPredictionList] = useState<any[]>([]);
+  const [toggle, setToggle] = useState(false);
 
   const USER_ID = "vp3fx9nhqq2j";
   const PAT = "4bf991280305438ba4a61e7963875886";
@@ -47,6 +48,7 @@ export const BodyHomePage = () => {
         );
         const { data } = res.data.outputs[0];
         setPredictionList(data.concepts);
+        res.status === 200 ? setToggle(true) : setToggle(false);
       } catch (err) {
         alert(err);
       }
@@ -55,10 +57,10 @@ export const BodyHomePage = () => {
   };
 
   return (
-    <div className="flex flex-col w-full h-full !justify-center items-center">
+    <div className="flex flex-col w-full h-full !justify-center mb-5 items-center">
       <div
         className={
-          "flex flex-col xl:flex-row lg:flex-row bg-blue-700 bg-opacity-20 bg-clip-padding backdrop-blur-3xl bg-transparent xl:w-2/5 lg:h-1/4 lg:w-3/5 h-2/4 w-5/6 justify-center items-center"
+          "flex mb-8 mt-6 py-10 flex-col xl:flex-row lg:flex-row bg-purple-400 bg-opacity-20 bg-clip-padding backdrop-blur-3xl bg-transparent 2xl:w-1/4 xl:w-3/5 lg:h-1/4 lg:w-3/5 h-36 w-5/6 justify-center items-center"
         }
       >
         <Input
@@ -83,32 +85,32 @@ export const BodyHomePage = () => {
           padding="py-2"
           marginTop="lg:mt-0 mt-1"
           marginLeft="lg:ml-4"
-          effects="hover:bg-purple-900 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300"
+          effects="lg:hover:bg-purple-900 transition lg:ease-in-out lg:delay-150 bg-purple-600 lg:hover:-translate-y-1 lg:hover:scale-110 lg:hover:bg-indigo-500 lg:duration-300"
         >
           Detect!
         </Button>
       </div>
       <div
         className={classNames(
-          `flex lg:flex-row lg:w-4/5 lg:justify-center  ${
-            link
-              ? "bg-blue-700 bg-opacity-20 bg-clip-padding backdrop-blur-3xl bg-transparent"
+          `flex lg:flex-row lg:w-5/6 px-3 lg:justify-center  ${
+            toggle
+              ? "bg-blue-500 bg-opacity-10 bg-clip-padding backdrop-blur-3xl bg-transparent"
               : ""
-          } flex-col lg:mt-10 lg:items-start items-center lg:w-2/5 h-full `
+          } flex-col lg:mt-14 lg:items-start items-center lg:w-2/5 `
         )}
       >
         <div className="flex w-full justify-center h-full">
           <ImageRecognition pictures={picture} />
         </div>
-        <div className="flex flex-col lg:w-full lg:h-full text-white justify-between lg:ml-8 w-60 lg:overflow-y-auto lg:text-3xl">
-          {link ? <p>General</p> : ""}
-          <div className="flex lg:w-4/5 lg:h-full justify-between lg:ml-8 w-60 lg:text-3xl">
-            <ul className="text-left">
+        <div className="flex flex-col lg:w-full h-full text-white justify-between lg:ml-8 w-60 lg:overflow-y-auto lg:text-3xl">
+          {toggle ? <p className="text-2xl lg:mt-4 mb-4">Predictions</p> : ""}
+          <div className="flex h-full lg:w-4/5 justify-between lg:ml-8 w-60 lg:text-2xl">
+            <ul className="h-full text-left">
               {predictionList.map((concept, indice) => (
                 <li key={indice}>{concept.name.toUpperCase()}</li>
               ))}
             </ul>
-            <ul className="lg:ml-7">
+            <ul className="h-full mb-3 lg:ml-7">
               {predictionList.map((concept, indice) => (
                 <li key={indice}>{concept.value.toFixed(1) * 100 + "%"}</li>
               ))}

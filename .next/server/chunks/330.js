@@ -80,7 +80,7 @@ const Input = ({ onValueChange , name , placeholder , value ="" , type , width ,
             placeholder: placeholder,
             value: value,
             type: type,
-            required: true,
+            required: required,
             className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(`${borderColor}
            ${bgColor}
            ${textColor}

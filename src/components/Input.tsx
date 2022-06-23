@@ -49,7 +49,7 @@ export const Input = ({
         placeholder={placeholder}
         value={value}
         type={type}
-        required
+        required={required}
         className={classNames(
           `${borderColor}
            ${bgColor}

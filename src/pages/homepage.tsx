@@ -16,17 +16,17 @@ const HomePage = () => {
   // }
 
   return (
-    <div className=" h-full w-full overflow-hidden bg-gradient-to-bl from-fuchsia-900 to-blue-400  flex flex-col text-center justify-items-center">
+    <div className="h-full w-full overflow-hidden bg-gradient-to-bl from-fuchsia-900 to-blue-400  flex flex-col text-center justify-items-center">
       <ParticlesHomePage />
       <div className="z-50 h-1/5">
         <NavBar />
       </div>
-      <div className="h-4/5 overflow-y-auto">
-        <div className="flex z-50 justify-center items-end h-2/5">
+      <div className="flex flex-col h-full overflow-y-auto">
+        <div className="flex z-50 justify-center mt-5 items-end h-2/5">
           <RankDescription name={"Pedro"} rank={1} />
         </div>
-        <div className="flex flex-col z-20 justify-center lg:mt-28 items-center h-4/5">
-          <p className="text-white mb-16 lg:text-xl text-sm">
+        <div className="flex flex-col z-20 justify-center lg:mt-28 items-center">
+          <p className="text-white mt-10 lg:text-xl text-sm">
             This magic app will describe some aspects in your photo. Fit it a
             try.
           </p>
