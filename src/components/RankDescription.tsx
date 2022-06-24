@@ -1,5 +1,7 @@
+
+
 type TypeProps = {
-  name?: string;
+  name?: any;
   rank?: number;
 };
 

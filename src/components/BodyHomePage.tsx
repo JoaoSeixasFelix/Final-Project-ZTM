@@ -77,7 +77,7 @@ export const BodyHomePage = () => {
           required
         />
         <Button
-          onClick={() => onSubmitImage()}
+          onClick={onSubmitImage}
           type={"submit"}
           width="xl:w-44 lg:w-44 w-60"
           backGroundColor="bg-purple-500"
