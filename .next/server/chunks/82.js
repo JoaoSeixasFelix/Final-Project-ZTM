@@ -120,12 +120,6 @@ const clarifaiApi = axios__WEBPACK_IMPORTED_MODULE_0___default().create({
 const api = axios__WEBPACK_IMPORTED_MODULE_0___default().create({
     baseURL: "http://localhost:3000"
 });
-api.interceptors.response.use(function(response) {
-    console.log(response);
-    return response;
-}, function(error) {
-    return Promise.reject(error);
-});
 
 
 /***/ })

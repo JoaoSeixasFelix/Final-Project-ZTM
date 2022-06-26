@@ -364,7 +364,43 @@ const RankDescription = (props)=>{
 
 
 
+
+
 const HomePage = ()=>{
+    const { 0: userUpdate1 , 1: setUserUpdate  } = (0,external_react_.useState)({
+        user: {
+            id: "",
+            name: "",
+            email: "",
+            entries: "",
+            joined: ""
+        }
+    });
+    const getUser = (data)=>{
+        const loadingUser = {
+            user: {
+                id: data.id,
+                name: data.name,
+                email: data.email,
+                entries: data.entries,
+                joined: data.joined
+            }
+        };
+        setUserUpdate((userUpdate)=>({
+                ...userUpdate,
+                ...loadingUser
+            })
+        );
+    };
+    console.log(userUpdate1.user.name);
+    api/* api.interceptors.response.use */.h.interceptors.response.use(function(resp) {
+        const { data  } = resp;
+        console.log(data);
+        getUser(data);
+        return resp;
+    }, function(error) {
+        return Promise.reject(error);
+    });
     return /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
         className: "h-full w-full overflow-hidden bg-gradient-to-bl from-fuchsia-900 to-blue-400 flex flex-col text-center justify-items-center",
         children: [
@@ -379,7 +415,7 @@ const HomePage = ()=>{
                     /*#__PURE__*/ jsx_runtime_.jsx("div", {
                         className: "flex z-50 justify-center mt-5 items-end h-2/5",
                         children: /*#__PURE__*/ jsx_runtime_.jsx(RankDescription, {
-                            name: "Joaquim Francisco",
+                            name: userUpdate1.user.name,
                             rank: 1
                         })
                     }),

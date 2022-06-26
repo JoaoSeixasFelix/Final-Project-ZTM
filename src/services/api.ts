@@ -7,13 +7,3 @@ export const clarifaiApi = axios.create({
 export const api = axios.create({
   baseURL: "http://localhost:3000",
 });
-
-api.interceptors.response.use(
-  function (response: any) {
-    console.log(response);
-    return response;
-  },
-  function (error: any) {
-    return Promise.reject(error);
-  }
-);

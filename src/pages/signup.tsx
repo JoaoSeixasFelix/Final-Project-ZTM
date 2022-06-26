@@ -7,8 +7,6 @@ import { Input } from "../components/Input";
 import { api } from "../services/api";
 import Router from "next/router";
 
-export const getUser = "";
-
 const SignUp = () => {
   const [name, setName] = useState();
   const [password, setPassWord] = useState();
@@ -78,7 +76,7 @@ const SignUp = () => {
               onValueChange={(e) => setEmail(e)}
               name="email"
               placeholder="  Email"
-              type={"email"}
+              type={"text"}
               value={email}
               borderColor="border-slate-500"
               width="xl:w-96 lg:w-96 w-60"
