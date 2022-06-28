@@ -1,5 +1,3 @@
-
-
 type TypeProps = {
   name?: any;
   rank?: number;
