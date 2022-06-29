@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useState } from "react";
 
 export const clarifaiApi = axios.create({
   baseURL: "https://api.clarifai.com",

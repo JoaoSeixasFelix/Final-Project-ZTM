@@ -104,9 +104,7 @@ const SignIn = () => {
         <div className="flex bg-indigo-400 bg-opacity-50 justify-center xl:w-full lg:w-w-full w-72 rounded py-2 items-center">
           <p className="text-lg">New?</p>
           <Link href={"/signup"}>
-            <a
-              className="m-1 text-white no-underline hover:underline text-lg"
-            >
+            <a className="m-1 text-white no-underline hover:underline text-lg">
               Create an account.
             </a>
           </Link>
