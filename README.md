@@ -2,6 +2,9 @@
 
 The aim of the project was to create all parts of the project in order to build a real experience of how to integrate and build all parts of the project.
 
+The Front-End was created and developed in React, using TypeScript in the NextJs framework.
+
+It was used from the axios dependency, for consumption of the created API.
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
