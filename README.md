@@ -11,8 +11,6 @@ The Tailwind CSS framework was used for learning and also to provide productivit
 TSParticles was also used for learning, and as background styling.
 
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## Technologies Used In This Project
 
 - [React](https://www.typescriptlang.org/pt/docs/handbook/react.html)
@@ -35,6 +33,8 @@ Now we need to run the development server:
 ```bash
 yarn run dev
 ```
+
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Deploy on Vercel
 
