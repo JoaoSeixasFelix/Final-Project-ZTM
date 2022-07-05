@@ -17,7 +17,6 @@ TSParticles was also used for learning, and as background styling.
     - [TypeScript](https://www.typescriptlang.org/)
     - [Next.js](https://nextjs.org/learn/excel/typescript)
     - [Axios](https://axios-http.com)
-    - [jwt](https://jwt.io/)
     - [Tailwind CSS](https://tailwindcss.com/)
     - [tsParticles](https://particles.js.org/)
       
