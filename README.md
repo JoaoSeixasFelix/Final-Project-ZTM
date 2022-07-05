@@ -6,6 +6,11 @@ The Front-End was created and developed in React, using TypeScript in the NextJs
 
 It was used from the axios dependency, for consumption of the created API.
 
+The Tailwind CSS framework was used for learning and also to provide productivity, since all styling was used in line.
+
+TSParticles was also used for learning, and as background styling.
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Technologies Used In This Project
