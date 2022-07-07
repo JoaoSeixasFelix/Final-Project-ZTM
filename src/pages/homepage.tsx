@@ -19,14 +19,7 @@ const HomePage = (data: any) => {
     entries: data.entries,
     joined: data.joined,
   };
-  // useMemo(() => {
-  //   setGetUser((getUser) => ({
-  //     ...getUser,
-  //     ...loadingUser,
-  //   }));
-  // }, []);
 
-  console.log(loadingUser);
   return (
     <div className="h-full w-full overflow-hidden bg-gradient-to-bl from-fuchsia-900 to-blue-400  flex flex-col text-center justify-items-center">
       <ParticlesHomePage />

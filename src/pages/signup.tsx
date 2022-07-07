@@ -65,17 +65,17 @@ const SignUp = () => {
         <p>Sign Up</p>
       </div>
 
-      <div className="flex flex-col justify-center w-full items-center h-4/5">
+      <div className="flex flex-col justify-center items-center h-4/5">
         <form
           onSubmit={handleSubmit}
-          className=" bg-indigo-400 bg-opacity-40 text-black bg-clip-padding backdrop-blur-3xl bg-transparent shadow-2xl rounded px-8 pt-6 pb-8 mb-4"
+          className=" bg-indigo-400 bg-opacity-40 text-black bg-clip-padding backdrop-blur-3xl bg-transparent shadow-2xl rounded px-6 pt-6 pb-8 mb-4"
         >
           <label>
             Nome
             <Input
               onValueChange={(e) => setName(e)}
               name="name"
-              placeholder="  Informe seu nome completo"
+              placeholder="  Enter Your Full Name"
               type={"text"}
               value={name}
               borderColor="border-slate-500"
@@ -92,7 +92,7 @@ const SignUp = () => {
             <Input
               onValueChange={(e) => setEmail(e)}
               name="email"
-              placeholder="  Email"
+              placeholder="  Enter Your Email"
               type={"email"}
               value={email}
               borderColor="border-slate-500"
@@ -134,14 +134,14 @@ const SignUp = () => {
               Sign Up
             </Button>
           </div>
-          <div className="flex bg-indigo-400 bg-opacity-10 mt-4 justify-center xl:w-full lg:w-w-full w-72 rounded py-2 items-center">
-            <Link href={"/signin"}>
-              <a className="m-1 text-white no-underline hover:underline text-lg">
-                Already have an account? Sign In.
-              </a>
-            </Link>
-          </div>
         </form>
+        <div className="flex bg-indigo-400 bg-opacity-80 justify-center xl:w-full lg:w-w-full w-72 rounded py-2 items-center">
+          <Link href={"/signin"}>
+            <a className="m-1 text-white text-center no-underline hover:underline lg:text-lg">
+              Already have an account?
+            </a>
+          </Link>
+        </div>
       </div>
     </div>
   );
