@@ -55,8 +55,8 @@ const SignIn = () => {
             <Input
               onValueChange={(e) => setEmail(e)}
               name="login"
-              placeholder="  Username"
-              type={"text"}
+              placeholder="  Inform your email"
+              type={"email"}
               value={email}
               borderColor="border-slate-500"
               width="xl:w-96 lg:w-96 w-60"

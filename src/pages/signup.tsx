@@ -62,20 +62,20 @@ const SignUp = () => {
       </div>
 
       <div className="flex items-end h-1/6 text-white text-3xl">
-        <p>SignUp</p>
+        <p>Sign Up</p>
       </div>
 
-      <div className=" flex justify-center w-full items-center h-4/5">
+      <div className="flex flex-col justify-center w-full items-center h-4/5">
         <form
           onSubmit={handleSubmit}
           className=" bg-indigo-400 bg-opacity-40 text-black bg-clip-padding backdrop-blur-3xl bg-transparent shadow-2xl rounded px-8 pt-6 pb-8 mb-4"
         >
           <label>
-            Login
+            Nome
             <Input
               onValueChange={(e) => setName(e)}
-              name="login"
-              placeholder="  Username"
+              name="name"
+              placeholder="  Informe seu nome completo"
               type={"text"}
               value={name}
               borderColor="border-slate-500"
@@ -93,7 +93,7 @@ const SignUp = () => {
               onValueChange={(e) => setEmail(e)}
               name="email"
               placeholder="  Email"
-              type={"text"}
+              type={"email"}
               value={email}
               borderColor="border-slate-500"
               width="xl:w-96 lg:w-96 w-60"
@@ -133,13 +133,13 @@ const SignUp = () => {
             >
               Sign Up
             </Button>
-            <div className="mt-3">
-              <Link href={"/signin"}>
-                <p className="text-xs cursor-pointer">
-                  Already have an account? Sign In.
-                </p>
-              </Link>
-            </div>
+          </div>
+          <div className="flex bg-indigo-400 bg-opacity-10 mt-4 justify-center xl:w-full lg:w-w-full w-72 rounded py-2 items-center">
+            <Link href={"/signin"}>
+              <a className="m-1 text-white no-underline hover:underline text-lg">
+                Already have an account? Sign In.
+              </a>
+            </Link>
           </div>
         </form>
       </div>
