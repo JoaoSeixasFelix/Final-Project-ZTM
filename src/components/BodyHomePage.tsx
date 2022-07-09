@@ -4,7 +4,7 @@ import { Button } from "./Button";
 import ImageRecognition from "./ImageRecognition";
 import { Input } from "./Input";
 import Loading from "../../public/Eclipse-1s-200px.svg";
-import LoadingAnimated from "../../public/Eclipse-Animated-1s-200px.svg"
+import LoadingAnimated from "../../public/Eclipse-Animated-1s-200px.svg";
 import classNames from "classnames";
 import Image from "next/image";
 
@@ -91,17 +91,7 @@ export const BodyHomePage = () => {
           effects="rounded lg:hover:bg-purple-900 transition lg:ease-in-out lg:delay-150 bg-purple-600 lg:hover:-translate-y-1 lg:hover:scale-110 lg:hover:bg-indigo-500 lg:duration-300"
         >
           <div className="flex items-center justify-center">
-            <span className="w-2/5">
-              <Image
-                src={LoadingAnimated}
-                width={30}
-                height={30}
-                className=""
-              />
-            </span>
-            <p className="animate-bounce text-left h-5 w-3/5 mr-3">
-              Detect!
-            </p>
+            <p className="text-left h-5 w-3/5 mr-3">Detect!</p>
           </div>
         </Button>
       </div>
