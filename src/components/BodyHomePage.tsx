@@ -90,9 +90,7 @@ export const BodyHomePage = () => {
           marginLeft="lg:ml-4"
           effects="rounded lg:hover:bg-purple-900 transition lg:ease-in-out lg:delay-150 bg-purple-600 lg:hover:-translate-y-1 lg:hover:scale-110 lg:hover:bg-indigo-500 lg:duration-300"
         >
-          <div className="flex items-center justify-center">
-            <p className="text-left h-5 w-3/5 mr-3">Detect!</p>
-          </div>
+          Detect!
         </Button>
       </div>
       <div

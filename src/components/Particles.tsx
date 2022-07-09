@@ -23,7 +23,7 @@ export const ParticlesHomePage = () => {
                 mode: "push",
               },
               onHover: {
-                enable: false,
+                enable: true,
                 mode: "repulse",
               },
               resize: true,
@@ -33,7 +33,7 @@ export const ParticlesHomePage = () => {
                 quantity: 4,
               },
               repulse: {
-                distance: 200,
+                distance: 40,
                 duration: 0.4,
               },
             },
@@ -45,7 +45,7 @@ export const ParticlesHomePage = () => {
             links: {
               color: "#fff",
               distance: 150,
-              enable: false,
+              enable: true,
               opacity: 0.5,
               width: 1,
             },

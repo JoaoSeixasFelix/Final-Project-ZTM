@@ -122,13 +122,7 @@ const BodyHomePage = ()=>{
                         marginTop: "lg:mt-0 mt-1",
                         marginLeft: "lg:ml-4",
                         effects: "rounded lg:hover:bg-purple-900 transition lg:ease-in-out lg:delay-150 bg-purple-600 lg:hover:-translate-y-1 lg:hover:scale-110 lg:hover:bg-indigo-500 lg:duration-300",
-                        children: /*#__PURE__*/ jsx_runtime_.jsx("div", {
-                            className: "flex items-center justify-center",
-                            children: /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                                className: "text-left h-5 w-3/5 mr-3",
-                                children: "Detect!"
-                            })
-                        })
+                        children: "Detect!"
                     })
                 ]
             }),
@@ -252,7 +246,7 @@ const ParticlesHomePage = ()=>{
                             mode: "push"
                         },
                         onHover: {
-                            enable: false,
+                            enable: true,
                             mode: "repulse"
                         },
                         resize: true
@@ -262,7 +256,7 @@ const ParticlesHomePage = ()=>{
                             quantity: 4
                         },
                         repulse: {
-                            distance: 200,
+                            distance: 40,
                             duration: 0.4
                         }
                     }
@@ -274,7 +268,7 @@ const ParticlesHomePage = ()=>{
                     links: {
                         color: "#fff",
                         distance: 150,
-                        enable: false,
+                        enable: true,
                         opacity: 0.5,
                         width: 1
                     },
