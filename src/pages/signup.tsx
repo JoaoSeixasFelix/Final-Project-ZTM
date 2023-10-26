@@ -6,23 +6,13 @@ import { Button } from "../components/Button";
 import { Input } from "../components/Input";
 import { api } from "../services/api";
 import Router from "next/router";
-import HomePage from "./homepage";
+import { useUser } from "../contexts/UserContext";
 
 const SignUp = () => {
+  const { signUp } = useUser();
   const [name, setName] = useState();
   const [password, setPassWord] = useState();
   const [email, setEmail] = useState();
-  const [userUpdate, setUserUpdate] = useState({
-    user: {
-      id: "",
-      name: "",
-      email: "",
-      entries: "",
-      joined: "",
-    },
-  });
-
-  HomePage(userUpdate);
 
   if (name !== undefined && email !== undefined && password !== undefined) {
   }
@@ -37,13 +27,9 @@ const SignUp = () => {
               email: email,
               password: password,
             })
-            .then((resp) => {
-              if (resp.status === 200) {
-                const { data } = resp;
-                setUserUpdate((userUpdate) => ({
-                  ...userUpdate,
-                  ...data,
-                }));
+            .then((response) => {
+              if (response.status === 200) {
+                signUp({ id: response.data.id, username: response.data.name });
                 Router.push("/homepage");
               }
             });

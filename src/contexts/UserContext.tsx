@@ -8,6 +8,7 @@ type User = {
 type UserContextType = {
   user: User | null;
   login: (userData: User) => void;
+  signUp: (userData: User) => void;
   logout: () => void;
 };
 
@@ -24,12 +25,16 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
     setUser(userData);
   };
 
+  const signUp = (userData: User) => {
+    setUser(userData);
+  };
+
   const logout = () => {
     setUser(null);
   };
 
   return (
-    <UserContext.Provider value={{ user, login, logout }}>
+    <UserContext.Provider value={{ user, login, signUp, logout }}>
       {children}
     </UserContext.Provider>
   );
