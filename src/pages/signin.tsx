@@ -1,39 +1,52 @@
 import Image from "next/image";
 import Link from "next/link";
 import Icon from "../../public/NavBarIcons/strategy-svgrepo-com.svg";
-import { useCallback, useState } from "react";
+import { useState, useCallback } from "react";
 import { Button } from "../components/Button";
 import { Input } from "../components/Input";
 import { api } from "../services/api";
+import { useUser } from "../contexts/UserContext"; // Importe o hook useUser do contexto UserContext
 import Router from "next/router";
 
 const SignIn = () => {
-  const [email, setEmail] = useState();
-  const [password, setPassWord] = useState();
+  const { login } = useUser();
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
-  if (email !== undefined && password !== undefined) {
-  }
   const handleSubmit = useCallback(
-    async (e: any) => {
+    async (e: React.FormEvent) => {
       e.preventDefault();
-      if (email !== undefined && password !== undefined) {
-        try {
-          await api
-            .post("/signin", {
-              email,
-              password,
-            })
-            .then((resp) => {
-              if (resp.status === 200) {
-                Router.push("/homepage");
-              }
-            });
-        } catch (err) {
-          alert(err);
+
+      // Validação de e-mail e senha (exemplo: comprimento mínimo da senha)
+      if (email.length === 0 || password.length < 8) {
+        alert("Email or password is invalid.");
+        return;
+      }
+
+      try {
+        // Faça a chamada à API para autenticação
+        const response = await api.post("/signin", {
+          email,
+          password,
+        });
+
+        if (response.status === 200) {
+          // Simule o login bem-sucedido, armazenando as informações do usuário no contexto
+          login({ id: response.data.userId, username: response.data.username });
+
+          // Redirecionar para a página de homepage após o login
+          Router.push("/homepage");
+        } else {
+          // Lógica para tratar erros de login (por exemplo, exibir uma mensagem de erro)
+          alert("Erro ao fazer login. Por favor, tente novamente.");
         }
+      } catch (err) {
+        // Lógica para tratar erros de chamada de API
+        alert("Erro ao fazer login. Por favor, tente novamente mais tarde.");
+        console.error("Erro ao fazer login:", err);
       }
     },
-    [email, password]
+    [email, password, login]
   );
 
   return (
@@ -70,7 +83,7 @@ const SignIn = () => {
           <label>
             Password
             <Input
-              onValueChange={(e) => setPassWord(e)}
+              onValueChange={(e) => setPassword(e)}
               name="password"
               placeholder="  **********"
               type={"password"}

@@ -3,6 +3,48 @@ exports.id = 689;
 exports.ids = [689];
 exports.modules = {
 
+/***/ 5856:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "a": () => (/* binding */ useUser),
+/* harmony export */   "d": () => (/* binding */ UserProvider)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(997);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6689);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+
+
+const UserContext = /*#__PURE__*/ (0,react__WEBPACK_IMPORTED_MODULE_1__.createContext)(undefined);
+const UserProvider = ({ children  })=>{
+    const { 0: user , 1: setUser  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null);
+    const login = (userData)=>{
+        setUser(userData);
+    };
+    const logout = ()=>{
+        setUser(null);
+    };
+    return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(UserContext.Provider, {
+        value: {
+            user,
+            login,
+            logout
+        },
+        children: children
+    });
+};
+const useUser = ()=>{
+    const context = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(UserContext);
+    if (!context) {
+        throw new Error("useUser must be used within a UserProvider");
+    }
+    return context;
+};
+
+
+/***/ }),
+
 /***/ 9689:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -22,8 +64,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(7543);
 /* harmony import */ var _components_Input__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(5740);
 /* harmony import */ var _services_api__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(8467);
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(1853);
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _contexts_UserContext__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(5856);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(1853);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_9__);
 
 
 
@@ -32,30 +75,46 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+ // Importe o hook useUser do contexto UserContext
 
 const SignIn = ()=>{
-    const { 0: email , 1: setEmail  } = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)();
-    const { 0: password , 1: setPassWord  } = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)();
-    if (email !== undefined && password !== undefined) {}
+    const { login  } = (0,_contexts_UserContext__WEBPACK_IMPORTED_MODULE_8__/* .useUser */ .a)();
+    const { 0: email , 1: setEmail  } = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)("");
+    const { 0: password , 1: setPassword  } = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)("");
     const handleSubmit = (0,react__WEBPACK_IMPORTED_MODULE_4__.useCallback)(async (e)=>{
         e.preventDefault();
-        if (email !== undefined && password !== undefined) {
-            try {
-                await _services_api__WEBPACK_IMPORTED_MODULE_7__/* .api.post */ .h.post("/signin", {
-                    email,
-                    password
-                }).then((resp)=>{
-                    if (resp.status === 200) {
-                        next_router__WEBPACK_IMPORTED_MODULE_8___default().push("/homepage");
-                    }
+        // Validação de e-mail e senha (exemplo: comprimento mínimo da senha)
+        if (email.length === 0 || password.length < 8) {
+            alert("Email or password is invalid.");
+            return;
+        }
+        try {
+            // Faça a chamada à API para autenticação
+            const response = await _services_api__WEBPACK_IMPORTED_MODULE_7__/* .api.post */ .h.post("/signin", {
+                email,
+                password
+            });
+            if (response.status === 200) {
+                // Simule o login bem-sucedido, armazenando as informações do usuário no contexto
+                login({
+                    id: response.data.userId,
+                    username: response.data.username
                 });
-            } catch (err) {
-                alert(err);
+                // Redirecionar para a página de homepage após o login
+                next_router__WEBPACK_IMPORTED_MODULE_9___default().push("/homepage");
+            } else {
+                // Lógica para tratar erros de login (por exemplo, exibir uma mensagem de erro)
+                alert("Erro ao fazer login. Por favor, tente novamente.");
             }
+        } catch (err) {
+            // Lógica para tratar erros de chamada de API
+            alert("Erro ao fazer login. Por favor, tente novamente mais tarde.");
+            console.error("Erro ao fazer login:", err);
         }
     }, [
         email,
-        password
+        password,
+        login
     ]);
     return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
         className: "flex flex-col h-full w-full bg-gradient-to-bl from-fuchsia-900 to-blue-400 items-center justify-center",
@@ -106,7 +165,7 @@ const SignIn = ()=>{
                                 children: [
                                     "Password",
                                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_Input__WEBPACK_IMPORTED_MODULE_6__/* .Input */ .I, {
-                                        onValueChange: (e)=>setPassWord(e)
+                                        onValueChange: (e)=>setPassword(e)
                                         ,
                                         name: "password",
                                         placeholder: " **********",

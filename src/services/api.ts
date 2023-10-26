@@ -5,5 +5,5 @@ export const clarifaiApi = axios.create({
 });
 
 export const api = axios.create({
-  baseURL: "https://back-end-ztm.herokuapp.com",
+  baseURL: 'http://localhost:8000',
 });

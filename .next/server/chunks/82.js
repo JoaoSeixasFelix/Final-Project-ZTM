@@ -118,7 +118,7 @@ const clarifaiApi = axios__WEBPACK_IMPORTED_MODULE_0___default().create({
     baseURL: "https://api.clarifai.com"
 });
 const api = axios__WEBPACK_IMPORTED_MODULE_0___default().create({
-    baseURL: "https://back-end-ztm.herokuapp.com"
+    baseURL: "http://localhost:8000"
 });
 
 
