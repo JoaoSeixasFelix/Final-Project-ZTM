@@ -29,7 +29,7 @@ const SignIn = () => {
         });
 
         if (response.status === 200) {
-          login({ id: response.data.id, username: response.data.name });
+          login({ id: response.data.id, username: response.data.name, entries:response.data.entries, email:response.data.email, joined:response.data.joined });
           Router.push("/homepage");
         } else {
           alert("Erro ao fazer login. Por favor, tente novamente.");

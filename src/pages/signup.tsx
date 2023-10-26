@@ -11,8 +11,8 @@ import { useUser } from "../contexts/UserContext";
 const SignUp = () => {
   const { signUp } = useUser();
   const [name, setName] = useState();
-  const [password, setPassWord] = useState();
   const [email, setEmail] = useState();
+  const [password, setPassWord] = useState();
 
   if (name !== undefined && email !== undefined && password !== undefined) {
   }
@@ -29,7 +29,7 @@ const SignUp = () => {
             })
             .then((response) => {
               if (response.status === 200) {
-                signUp({ id: response.data.id, username: response.data.name });
+                signUp({ id: response.data.id, username: response.data.name, entries:response.data.entries, email:response.data.email, joined:response.data.joined });
                 Router.push("/homepage");
               }
             });

@@ -53,7 +53,10 @@ const SignIn = ()=>{
             if (response.status === 200) {
                 login({
                     id: response.data.id,
-                    username: response.data.name
+                    username: response.data.name,
+                    entries: response.data.entries,
+                    email: response.data.email,
+                    joined: response.data.joined
                 });
                 next_router__WEBPACK_IMPORTED_MODULE_9___default().push("/homepage");
             } else {
