@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { clarifaiApi } from "../services/api";
+import { api, clarifaiApi } from "../services/api";
 import { Button } from "./Button";
 import ImageRecognition from "./ImageRecognition";
 import { Input } from "./Input";
 import Loading from "../../public/Eclipse-1s-200px.svg";
 import LoadingAnimated from "../../public/Eclipse-Animated-1s-200px.svg";
+import { useUser } from "../contexts/UserContext";
 import classNames from "classnames";
 import Image from "next/image";
 
@@ -13,6 +14,7 @@ export const BodyHomePage = () => {
   const [picture, setPicture] = useState();
   const [predictionList, setPredictionList] = useState<any[]>([]);
   const [toggle, setToggle] = useState(false);
+  const { user } = useUser(); // Assumindo que você tem um contexto chamado UserContext que contém informações do usuário
 
   const USER_ID = "vp3fx9nhqq2j";
   const PAT = "4bf991280305438ba4a61e7963875886";
@@ -52,6 +54,9 @@ export const BodyHomePage = () => {
         const { data } = res.data.outputs[0];
         setPredictionList(data.concepts);
         res.status === 200 ? setToggle(true) : setToggle(false);
+        await api.put("/image", {
+          id: user?.id
+        });
       } catch (err) {
         alert(err);
       }

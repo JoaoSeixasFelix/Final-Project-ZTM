@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import React, { createContext, useContext, useState, ReactNode, useEffect } from "react";
+import Cookies from "js-cookie";
 
 type User = {
   id: number;
@@ -24,16 +25,26 @@ type UserProviderProps = {
 export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
 
+  useEffect(() => {
+    const savedUser = Cookies.get("user");
+    if (savedUser) {
+      setUser(JSON.parse(savedUser));
+    }
+  }, []);
+
   const login = (userData: User) => {
     setUser(userData);
+    Cookies.set("user", JSON.stringify(userData));
   };
 
   const signUp = (userData: User) => {
     setUser(userData);
+    Cookies.set("user", JSON.stringify(userData));
   };
 
   const logout = () => {
     setUser(null);
+    Cookies.remove("user");
   };
 
   return (
