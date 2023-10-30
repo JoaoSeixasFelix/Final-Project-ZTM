@@ -1,12 +1,15 @@
 import React, { createContext, useContext, useState, ReactNode, useEffect } from "react";
-import Cookies from "js-cookie";
+import { api } from "../services/api";
+import {parseCookies, setCookie, destroyCookie} from 'nookies'
+import Router from "next/router";
 
 type User = {
   id: number;
-  username: string;
+  name: string;
   entries: number;
   email: string;
   joined: Date;
+  token: string;
 };
 
 type UserContextType = {
@@ -26,25 +29,40 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    const savedUser = Cookies.get("user");
-    if (savedUser) {
-      setUser(JSON.parse(savedUser));
+    const { 'auth.token': token } = parseCookies();
+ 
+    if (token) {
+      api.post("/verifyToken")
+      .then(response => {
+          console.log(response.status);
+          setUser(response.data.user);
+        })
+        .catch(error => {
+          logout();
+        });
     }
   }, []);
-
+  
   const login = (userData: User) => {
+    setCookie(undefined, 'auth.token', userData.token, {
+      maxAge: 60 * 60 * 1, // 1 hora em segundos
+      path: '/',
+    });
     setUser(userData);
-    Cookies.set("user", JSON.stringify(userData));
+    Router.push("/homepage");
   };
-
+  
   const signUp = (userData: User) => {
     setUser(userData);
-    Cookies.set("user", JSON.stringify(userData));
+    setCookie(undefined, 'auth.token', userData.token, {
+      maxAge: 60 * 60 * 1, // 1 hour
+      path: '/',
+    });
   };
-
+  
   const logout = () => {
     setUser(null);
-    Cookies.remove("user");
+    destroyCookie(null, 'auth.token');
   };
 
   return (

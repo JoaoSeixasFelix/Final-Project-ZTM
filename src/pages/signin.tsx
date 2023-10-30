@@ -16,21 +16,23 @@ const SignIn = () => {
   const handleSubmit = useCallback(
     async (e: React.FormEvent) => {
       e.preventDefault();
-
+  
       if (email.length === 0) {
         alert("Email or password is invalid.");
         return;
       }
-
+  
       try {
         const response = await api.post("/signin", {
           email,
           password,
         });
+        
+        const { token, user } = response.data;
 
-        if (response.status === 200) {
-          login({ id: response.data.id, username: response.data.name, entries:response.data.entries, email:response.data.email, joined:response.data.joined });
-          Router.push("/homepage");
+        if (token && user) {
+          const { id, name, entries, email, joined } = user;
+          login({ id, name, entries, email, joined, token });
         } else {
           alert("Erro ao fazer login. Por favor, tente novamente.");
         }

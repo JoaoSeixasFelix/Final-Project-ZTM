@@ -22,7 +22,7 @@ const HomePage = () => {
       <div className="flex flex-col h-full overflow-y-auto">
         <div className="flex z-50 justify-center mt-5 items-end h-2/5">
           {user && (
-            <RankDescription name={user?.username} rank={user?.entries} />
+            <RankDescription name={user?.name} rank={user?.entries} />
           )}
         </div>
         <div className="flex flex-col z-20 justify-center lg:mt-28 items-center">

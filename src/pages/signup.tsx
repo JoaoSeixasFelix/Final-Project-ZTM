@@ -28,9 +28,14 @@ const SignUp = () => {
               password: password,
             })
             .then((response) => {
-              if (response.status === 200) {
-                signUp({ id: response.data.id, username: response.data.name, entries:response.data.entries, email:response.data.email, joined:response.data.joined });
+              const { token, user } = response.data;
+
+              if (token && user) {
+                const { id, name, entries, email, joined } = user;
+                signUp({ id, name, entries, email, joined, token });
                 Router.push("/homepage");
+              } else {
+                alert("Erro ao fazer login. Por favor, tente novamente.");
               }
             });
         } catch (err) {
