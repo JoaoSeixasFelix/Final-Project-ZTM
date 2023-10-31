@@ -2,8 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import Icon from "../../public/NavBarIcons/strategy-svgrepo-com.svg";
 import { Button } from "./Button";
+import { useUser } from "../contexts/UserContext";
 
 export const NavBar = () => {
+  const { logout } = useUser();
   return (
     <div className="flex w-full bg-opacity-5 bg-violet-600 bg-clip-padding backdrop-blur-lg justify-between">
       <div className="flex w-1/2 mt-4 ml-6 justify-start mb-5 items-center">
@@ -21,6 +23,7 @@ export const NavBar = () => {
             type="button"
             border="border-2"
             effects="rounded-full hover:bg-purple-900"
+            onClick={() => logout()}
           >
             SignOut
           </Button>

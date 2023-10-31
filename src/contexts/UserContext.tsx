@@ -16,7 +16,7 @@ type UserContextType = {
   user: User | null;
   login: (userData: User) => void;
   signUp: (userData: User) => void;
-  logout: () => void;
+  logout: () => Promise<void>;
 };
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
@@ -30,11 +30,9 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
 
   useEffect(() => {
     const { 'auth.token': token } = parseCookies();
- 
     if (token) {
       api.post("/verifyToken")
       .then(response => {
-          console.log(response.status);
           setUser(response.data.user);
         })
         .catch(error => {
@@ -45,22 +43,23 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   
   const login = (userData: User) => {
     setCookie(undefined, 'auth.token', userData.token, {
-      maxAge: 60 * 60 * 1, // 1 hora em segundos
-      path: '/',
+      maxAge: 60 * 60 * 1, // 1 hour in seconds
+      path: '/'
     });
     setUser(userData);
     Router.push("/homepage");
   };
   
   const signUp = (userData: User) => {
-    setUser(userData);
     setCookie(undefined, 'auth.token', userData.token, {
-      maxAge: 60 * 60 * 1, // 1 hour
-      path: '/',
+      maxAge: 60 * 60 * 1, // 1 hour in seconds
+      path: '/'
     });
+    setUser(userData);
+    Router.push("/homepage");
   };
   
-  const logout = () => {
+  const logout = async (): Promise<void> => {
     setUser(null);
     destroyCookie(null, 'auth.token');
   };
