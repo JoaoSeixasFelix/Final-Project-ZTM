@@ -23,7 +23,7 @@ export const BodyHomePage = () => {
         const res = await api.post('/faceapp', {
           link: link
         });
-        setPredictionList(res.data.concepts);
+        setPredictionList(res.data.processedData.concepts);
         res.status === 200 ? setToggle(true) : setToggle(false);
         await api.put("/image", {
           id: user?.id
