@@ -43,7 +43,7 @@ const SignIn = ()=>{
             return;
         }
         try {
-            const response = await _services_api__WEBPACK_IMPORTED_MODULE_7__/* .api.post */ .h.post("/signin", {
+            const response = await _services_api__WEBPACK_IMPORTED_MODULE_7__/* ["default"].post */ .Z.post("/signin", {
                 email: email1,
                 password
             });

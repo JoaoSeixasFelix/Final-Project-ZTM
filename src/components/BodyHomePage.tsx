@@ -1,58 +1,29 @@
-import { useState } from "react";
-import { api, clarifaiApi } from "../services/api";
-import { Button } from "./Button";
-import ImageRecognition from "./ImageRecognition";
+import Image from "next/image";
 import { Input } from "./Input";
+import { useState } from "react";
+import api from "../services/api";
+import { Button } from "./Button";
+import classNames from "classnames";
+import ImageRecognition from "./ImageRecognition";
+import { useUser } from "../contexts/UserContext";
 import Loading from "../../public/Eclipse-1s-200px.svg";
 import LoadingAnimated from "../../public/Eclipse-Animated-1s-200px.svg";
-import { useUser } from "../contexts/UserContext";
-import classNames from "classnames";
-import Image from "next/image";
 
 export const BodyHomePage = () => {
   const [link, setLink] = useState();
   const [picture, setPicture] = useState();
   const [predictionList, setPredictionList] = useState<any[]>([]);
   const [toggle, setToggle] = useState(false);
-  const { user } = useUser(); // Assumindo que você tem um contexto chamado UserContext que contém informações do usuário
+  const { user } = useUser();
 
-  const USER_ID = "vp3fx9nhqq2j";
-  const PAT = "4bf991280305438ba4a61e7963875886";
-  const APP_ID = "d85b056a98b44bc99fe922613461ae77";
-  const MODEL_ID = "general-image-recognition";
-  const MODEL_VERSION = "aa7f35c01e0642fda5cf400f543e7c40";
-  const IMAGE_URL = link;
-  const raw = JSON.stringify({
-    user_app_id: {
-      user_id: USER_ID,
-      app_id: APP_ID,
-    },
-    inputs: [
-      {
-        data: {
-          image: {
-            url: IMAGE_URL,
-          },
-        },
-      },
-    ],
-  });
 
   const onSubmitImage = async () => {
     if (link) {
       try {
-        const res = await clarifaiApi.post(
-          `/v2/models/${MODEL_ID}/versions/${MODEL_VERSION}/outputs`,
-          raw,
-          {
-            headers: {
-              Accept: "application/json",
-              Authorization: "Key " + PAT,
-            },
-          }
-        );
-        const { data } = res.data.outputs[0];
-        setPredictionList(data.concepts);
+        const res = await api.post('/faceapp', {
+          link: link
+        });
+        setPredictionList(res.data.concepts);
         res.status === 200 ? setToggle(true) : setToggle(false);
         await api.put("/image", {
           id: user?.id
@@ -100,10 +71,9 @@ export const BodyHomePage = () => {
       </div>
       <div
         className={classNames(
-          `flex lg:flex-row lg:w-5/6 px-3 lg:justify-center  ${
-            toggle
-              ? "bg-blue-500 bg-opacity-10 bg-clip-padding backdrop-blur-3xl bg-transparent"
-              : ""
+          `flex lg:flex-row lg:w-5/6 px-3 lg:justify-center  ${toggle
+            ? "bg-blue-500 bg-opacity-10 bg-clip-padding backdrop-blur-3xl bg-transparent"
+            : ""
           } flex-col lg:mt-14 lg:items-start items-center lg:w-2/5 `
         )}
       >

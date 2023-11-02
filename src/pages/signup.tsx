@@ -4,7 +4,7 @@ import Icon from "../../public/NavBarIcons/strategy-svgrepo-com.svg";
 import { useCallback, useState } from "react";
 import { Button } from "../components/Button";
 import { Input } from "../components/Input";
-import { api } from "../services/api";
+import api from "../services/api";
 import Router from "next/router";
 import { useUser } from "../contexts/UserContext";
 

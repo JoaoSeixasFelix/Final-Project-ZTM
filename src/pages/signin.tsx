@@ -4,7 +4,7 @@ import Icon from "../../public/NavBarIcons/strategy-svgrepo-com.svg";
 import { useState, useCallback } from "react";
 import { Button } from "../components/Button";
 import { Input } from "../components/Input";
-import { api } from "../services/api";
+import api from "../services/api";
 import { useUser } from "../contexts/UserContext";
 
 const SignIn = () => {

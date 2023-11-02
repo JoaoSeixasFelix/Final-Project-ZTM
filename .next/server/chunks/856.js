@@ -30,7 +30,7 @@ const UserProvider = ({ children  })=>{
     (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{
         const { "auth.token": token  } = (0,nookies__WEBPACK_IMPORTED_MODULE_3__.parseCookies)();
         if (token) {
-            _services_api__WEBPACK_IMPORTED_MODULE_2__/* .api.post */ .h.post("/verifyToken").then((response)=>{
+            _services_api__WEBPACK_IMPORTED_MODULE_2__/* ["default"].post */ .Z.post("/verifyToken").then((response)=>{
                 setUser(response.data.user);
             }).catch((error)=>{
                 logout();
@@ -82,8 +82,7 @@ const useUser = ()=>{
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "N": () => (/* binding */ clarifaiApi),
-/* harmony export */   "h": () => (/* binding */ api)
+/* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2167);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
@@ -93,16 +92,26 @@ const useUser = ()=>{
 
 const cookies = (0,nookies__WEBPACK_IMPORTED_MODULE_1__.parseCookies)();
 const token = cookies["auth.token"];
-const clarifaiApi = axios__WEBPACK_IMPORTED_MODULE_0___default().create({
-    baseURL: "https://api.clarifai.com"
-});
 const api = axios__WEBPACK_IMPORTED_MODULE_0___default().create({
-    baseURL: "http://localhost:8000",
+    baseURL: "http://localhost:8080",
     headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${token || ""}`
     }
 });
+api.interceptors.request.use((config)=>{
+    const updatedConfig = {
+        ...config
+    };
+    updatedConfig.headers = updatedConfig.headers || {};
+    if (token) {
+        updatedConfig.headers.Authorization = `Bearer ${token}`;
+    }
+    return updatedConfig;
+}, (error)=>{
+    return Promise.reject(error);
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (api);
 
 
 /***/ })
