@@ -8,9 +8,13 @@ import { useUser } from "../contexts/UserContext";
 const HomePage = () => {
   const { user: contextUser } = useUser();
   const [user, setUser] = useState(contextUser);
+  const [entries, setEntries] = useState<number>(contextUser?.entries || 0);
+
 
   useEffect(() => {
     setUser(contextUser);
+    setEntries(contextUser?.entries || 0);
+    console.log(contextUser);
   }, [contextUser]);
 
   return (

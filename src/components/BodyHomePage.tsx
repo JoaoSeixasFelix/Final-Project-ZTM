@@ -20,14 +20,14 @@ export const BodyHomePage = () => {
   const onSubmitImage = async () => {
     if (link) {
       try {
-        const res = await api.post('/faceapp', {
+        const responseClarify = await api.post('/faceapp', {
           link: link
         });
-        setPredictionList(res.data.processedData.concepts);
-        res.status === 200 ? setToggle(true) : setToggle(false);
-        await api.put("/image", {
+        const responseImage = await api.put("/image", {
           id: user?.id
         });
+        setPredictionList(responseClarify.data.processedData.concepts);
+        responseClarify.status === 200 ? setToggle(true) : setToggle(false);
       } catch (err) {
         alert(err);
       }
